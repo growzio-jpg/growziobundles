@@ -29,10 +29,19 @@
       theme: {
         extend: {
           colors: {
-            primary: '#CC5500',
-            secondary: '#005F73',
-            dark: '#0a0a0a',
-            lightbg: '#F8F9FA'
+            primary: '#81B441',
+            'primary-dark': '#6aa034',
+            secondary: '#A8E063',
+            'secondary-dark': '#8ccf4a',
+            dark: '#111111',
+            lightbg: '#1A1A1A',
+            'light-text': '#FFFFFF',
+            'border-gray': '#CCCCCC',
+            'whatsapp-green': '#25D366',
+            'tailwind-green': '#10B981',
+            'tailwind-pink': '#EC4899',
+            'instagram-pink': '#E1306C',
+            'tailwind-blue': '#3B82F6'
           }
         }
       }
@@ -68,13 +77,14 @@
   <style>
     /* Global */
     :root {
-      --primary: #CC5500;       /* Burnt Orange for interactive elements */
-      --primary-dark: #A04300;  /* Darker shade for hover states */
-      --secondary: #005F73;     /* Deep Teal for headers, footers */
-      --secondary-dark: #004953; /* Darker teal */
-      --dark: #0a0a0a;          /* Keeping dark for text */
-      --light-bg: #F8F9FA;      /* Light off-white for backgrounds */
-      --light-text: #FFFFFF;    /* White for text on dark backgrounds */
+      --primary: #81B441;       /* Primary/Envato Green */
+      --primary-dark: #6aa034;  /* Primary Dark */
+      --secondary: #A8E063;     /* Secondary/Mint Accent */
+      --secondary-dark: #8ccf4a; /* Secondary Dark */
+      --dark: #111111;          /* Dark/Deep Black */
+      --light-bg: #1A1A1A;      /* Light BG/Dark Gray */
+      --light-text: #FFFFFF;    /* Light Text/White */
+      --border-gray: #CCCCCC;   /* Border Gray/Light Gray */
     }
     
     * {
@@ -85,8 +95,8 @@
     
     body { 
       scroll-behavior: smooth; 
-      background-color: var(--light-bg);
-      color: #333;
+      background-color: var(--dark);
+      color: var(--light-text);
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       line-height: 1.6;
     }
@@ -98,7 +108,7 @@
     }
     
     h1, h2, h3, h4 {
-      color: var(--secondary);
+      color: var(--light-text);
       line-height: 1.3;
       font-weight: 700;
     }
@@ -122,7 +132,7 @@
     }
     
     dialog::backdrop {
-      background: rgba(0,0,0,.7);
+      background: rgba(0,0,0,0.7);
     }
     
     .btn {
@@ -136,12 +146,13 @@
       transition: all 0.3s ease;
       border: none;
       cursor: pointer;
+      box-shadow: 0 5px 15px rgba(129, 180, 65, 0.2);
     }
     
     .btn:hover {
       background: var(--primary-dark);
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(204, 85, 0, 0.2);
+      box-shadow: 0 10px 20px rgba(129, 180, 65, 0.2);
     }
     
     .btn-outline {
@@ -153,6 +164,7 @@
     .btn-outline:hover {
       background: var(--primary);
       color: white;
+      background-color: rgba(255,255,255,0.1);
     }
     
     /* Code Protection Styles */
@@ -179,7 +191,7 @@
       height: 60px;
       bottom: 20px;
       right: 20px;
-      background: #25D366; /* Changed to green */
+      background: #25D366;
       color: #fff;
       border-radius: 50px;
       text-align: center;
@@ -199,40 +211,16 @@
     }
     
     .glow-box {
-      box-shadow: 0 0 15px rgba(204, 85, 0, 0.25);
+      box-shadow: 0 0 15px rgba(129, 180, 65, 0.25);
     } 
     
     .glow-orange:hover {
-      box-shadow: 0 0 20px rgba(204, 85, 0, 0.6);
-    }
-
-    /* Offer timer */
-    .offer-timer {
-      background: linear-gradient(90deg, var(--primary), #FF7F40, var(--primary)); 
-      background-size: 200% 200%; 
-      animation: gradientShift 3s ease infinite; 
-      border: 2px solid #fff; 
-      box-shadow: 0 0 20px rgba(204, 85, 0, 0.35);
-    } 
-    
-    @keyframes gradientShift { 
-      0% { background-position: 0% 50%; } 
-      50% { background-position: 100% 50%; } 
-      100% { background-position: 0% 50%; } 
-    }
-    
-    .timer-digit { 
-      background: rgba(0, 0, 0, 0.65); 
-      border-radius: 8px; 
-      padding: 8px; 
-      min-width: 48px; 
-      text-align: center; 
-      font-variant-numeric: tabular-nums; 
+      box-shadow: 0 0 20px rgba(129, 180, 65, 0.6);
     }
     
     .original-price { 
       text-decoration: line-through; 
-      opacity: 0.7; 
+      color: #999;
       font-size: 0.9em; 
       margin-right: 5px; 
     }
@@ -268,8 +256,8 @@
       padding: 4rem 0;
     }
     
-    .section:nth-child(even) {
-      background-color: #FFFFFF;
+    .section:nth-child(odd) {
+      background-color: var(--light-bg);
     }
     
     .section-title {
@@ -278,6 +266,7 @@
       margin-bottom: 1rem;
       position: relative;
       display: inline-block;
+      color: var(--light-text);
     }
     
     .section-title::after {
@@ -294,7 +283,7 @@
     
     .section-subtitle {
       text-align: center;
-      color: #666;
+      color: var(--border-gray);
       margin-bottom: 3rem;
       max-width: 700px;
       margin-left: auto;
@@ -302,29 +291,30 @@
     }
     
     .trust-badge { 
-      background: rgba(0, 95, 115, 0.1); 
+      background: rgba(129, 180, 65, 0.1); 
       border-radius: 12px; 
       padding: 1.5rem; 
       text-align: center; 
       transition: all 0.3s ease; 
+      border: 1px solid rgba(129, 180, 65, 0.2);
     }
     
     .trust-badge:hover { 
       transform: translateY(-5px); 
-      background: rgba(0, 95, 115, 0.15); 
+      background: rgba(129, 180, 65, 0.2); 
     }
     
-    .testimonial-card { 
-      background: linear-gradient(145deg, #f5f5f5, #e6e6e6); 
+    .testimonial-card, .blog-card { 
+      background: #2a2a2a; 
       border-left: 4px solid var(--primary); 
       padding: 1.5rem; 
       border-radius: 8px; 
       height: 100%;
-      color: #333;
+      color: var(--light-text);
     }
     
     .faq-item { 
-      border-bottom: 1px solid #ddd; 
+      border-bottom: 1px solid #444; 
       padding: 1rem 0; 
     }
     
@@ -335,9 +325,8 @@
       align-items: center; 
     }
     
-    /* Blog cards */
     .blog-card {
-      background: linear-gradient(145deg, #f5f5f5, #e6e6e6);
+      background: #2a2a2a;
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.3s ease;
@@ -363,9 +352,9 @@
       display: inline-block;
       width: 20px;
       height: 20px;
-      border: 3px solid rgba(0,0,0,.3);
+      border: 3px solid rgba(255,255,255,.3);
       border-radius: 50%;
-      border-top-color: #333;
+      border-top-color: #fff;
       animation: spin 1s ease-in-out infinite;
     }
     
@@ -373,638 +362,175 @@
       to { transform: rotate(360deg); }
     }
     
-    /* Cart Modal Positioning - Full Screen */
-    #cart-modal {
+    /* Modals Base Styles */
+    #cart-modal, #added-to-cart-modal, #product-detail-modal, #privacy-policy-modal, #terms-modal, #refund-policy-modal {
+      background: #333;
+      color: var(--light-text);
+      border: 1px solid #444;
+    }
+
+    #cart-modal, #product-detail-modal, #privacy-policy-modal, #terms-modal, #refund-policy-modal {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      max-width: 100%;
-      max-height: 100%;
-      overflow-y: auto;
-      background: var(--light-bg);
-      color: #333;
-      border-radius: 0;
-      padding: 2rem;
-      box-shadow: none;
-      z-index: 1001;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      margin: 0; max-width: 100%; max-height: 100%;
+      overflow-y: auto; border-radius: 0;
+      padding: 2rem; box-shadow: none; z-index: 1001;
     }
     
-    /* Added to Cart Modal */
     #added-to-cart-modal {
-      position: fixed;
-      top: 50%;
-      left: 50%;
+      position: fixed; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      margin: 0;
-      max-width: 450px;
-      width: 90%;
-      background: var(--light-bg);
-      color: #333;
+      margin: 0; max-width: 450px; width: 90%;
     }
     
-    /* Product Detail Modal */
-    #product-detail-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      max-width: 100%;
-      max-height: 100%;
-      overflow-y: auto;
-      background: var(--light-bg);
-      color: #333;
-      border-radius: 0;
-      padding: 2rem;
-      box-shadow: none;
-      z-index: 1001;
+    /* Hero Section */
+    #home {
+      position: relative;
     }
-    
-    /* Privacy Policy, Terms of Service and Refund Policy Modals */
-    #privacy-policy-modal,
-    #terms-modal,
-    #refund-policy-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      max-width: 100%;
-      max-height: 100%;
-      overflow-y: auto;
-      background: var(--light-bg);
-      color: #333;
-      border-radius: 0;
-      padding: 2rem;
-      box-shadow: none;
-      z-index: 1001;
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.9));
     }
     
     /* New Animations */
-    .float-animation {
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0% { transform: translatey(0px); }
-      50% { transform: translatey(-20px); }
-      100% { transform: translatey(0px); }
-    }
+    .float-animation { animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0% { transform: translatey(0px); } 50% { transform: translatey(-20px); } 100% { transform: translatey(0px); } }
     
     .typewriter {
       overflow: hidden;
       border-right: .15em solid var(--primary);
-      white-space: nowrap;
-      margin: 0 auto;
+      white-space: nowrap; margin: 0 auto;
       letter-spacing: .15em;
       animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
     }
-    
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: var(--primary); }
-    }
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary); } }
     
     .gradient-text {
-      background: linear-gradient(to right, var(--primary), #FF7F40);
+      background: linear-gradient(to right, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 300% 300%;
       animation: gradient 3s ease infinite;
     }
+    @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+    .parallax { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; }
     
-    .parallax {
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    
-    .shine {
-      position: relative;
-      overflow: hidden;
-    }
-    
+    .shine { position: relative; overflow: hidden; }
     .shine::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      content: ''; position: absolute;
+      top: -50%; left: -50%; width: 200%; height: 200%;
       background: rgba(255,255,255,0.1);
-      transform: rotate(45deg);
-      animation: shine 3s infinite;
+      transform: rotate(45deg); animation: shine 3s infinite;
     }
-    
-    @keyframes shine {
-      0% { transform: translateX(-100%) rotate(45deg); }
-      100% { transform: translateX(100%) rotate(45deg); }
-    }
+    @keyframes shine { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
     
     /* Bundles Section Styles */
-    .bundles-header {
-      text-align: center;
-      margin-bottom: 50px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .bundles-title {
-      font-size: 3.5rem;
-      color: var(--primary);
-      margin-bottom: 15px;
-      letter-spacing: 2px;
-    }
-    
-    .bundles-subtitle {
-      font-size: 1.2rem;
-      color: #666;
-      margin-bottom: 30px;
-    }
-    
-    .bundles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    .bundles-header { text-align: center; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .bundles-title { font-size: 3.5rem; color: var(--light-text); margin-bottom: 15px; letter-spacing: 2px; }
+    .bundles-subtitle { font-size: 1.2rem; color: var(--border-gray); margin-bottom: 30px; }
+    .bundles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; width: 100%; max-width: 1400px; margin: 0 auto; }
     
     .bundle-card {
-      background: linear-gradient(145deg, #E6F4F7, #C4E8F0);
-      border-radius: 16px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      background: #2a2a2a; border-radius: 16px;
+      border: 1px solid #444;
+      padding: 20px; text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       transition: transform 0.4s, box-shadow 0.4s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100%;
+      display: flex; flex-direction: column; align-items: center; height: 100%;
     }
+    .bundle-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); }
     
-    .bundle-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(204, 85, 0, 0.3);
-    }
+    .bundle-product-container { width: 100%; height: 320px; perspective: 1200px; margin-bottom: 20px; cursor: pointer; }
+    .bundle-product { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; border-radius: 12px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); transition: transform 0.8s; }
+    .bundle-product-front, .bundle-product-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+    .bundle-product-front { background: #2a2a2a; }
+    .bundle-product-back { transform: rotateY(180deg); background: linear-gradient(45deg, var(--primary), var(--secondary)); display: flex; flex-direction: column; justify-content: center; padding: 20px; text-align: left; color: white; }
+    .bundle-product-back h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; text-align: center; }
+    .bundle-product-back ul { padding-left: 20px; margin-bottom: 15px; }
+    .bundle-product-back li { font-size: 0.9rem; color: #eee; line-height: 1.5; margin-bottom: 8px; }
+    .bundle-product-back p { font-size: 1rem; color: #eee; line-height: 1.5; text-align: center; }
+    .bundle-product img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; background: #2a2a2a; }
     
-    .bundle-product-container {
-      width: 100%;
-      height: 320px;
-      perspective: 1200px;
-      margin-bottom: 20px;
-      cursor: pointer;
-    }
+    .bundle-card h2 { font-size: 1.6rem; margin: 15px 0; color: var(--light-text); }
+    .bundle-price-container { display: flex; flex-direction: column; align-items: center; margin: 10px 0; }
+    .bundle-original-price { font-size: 1.1rem; color: #999; text-decoration: line-through; }
+    .bundle-sale-price { font-size: 1.4rem; color: var(--primary); font-weight: bold; }
     
-    .bundle-product {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      transition: transform 0.8s;
-    }
-    
-    .bundle-product-front, .bundle-product-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      background: #fff;
-    }
-    
-    .bundle-product-back {
-      transform: rotateY(180deg);
-      background: linear-gradient(45deg, var(--secondary), #0080A0);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 20px;
-      text-align: left;
-      color: white;
-    }
-    
-    .bundle-product-back h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: #fff;
-      text-align: center;
-    }
-    
-    .bundle-product-back ul {
-      padding-left: 20px;
-      margin-bottom: 15px;
-    }
-    
-    .bundle-product-back li {
-      font-size: 0.9rem;
-      color: #e2e2e2;
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-    
-    .bundle-product-back p {
-      font-size: 1rem;
-      color: #e2e2e2;
-      line-height: 1.5;
-      text-align: center;
-    }
-    
-    .bundle-product img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-    
-    .bundle-card h2 {
-      font-size: 1.6rem;
-      margin: 15px 0;
-      color: var(--secondary);
-    }
-    
-    .bundle-price-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 10px 0;
-    }
-    
-    .bundle-original-price {
-      font-size: 1.1rem;
-      color: #777;
-      text-decoration: line-through;
-    }
-    
-    .bundle-sale-price {
-      font-size: 1.4rem;
-      color: var(--primary);
-      font-weight: bold;
-    }
-    
-    .bundle-btn {
-      display: inline-block;
-      padding: 14px 30px;
-      margin-top: 15px;
-      background: linear-gradient(45deg, var(--primary), #E3712A);
-      color: white;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(204, 85, 0, 0.4);
-    }
-    
-    .bundle-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(204, 85, 0, 0.6);
-      background: linear-gradient(45deg, #E3712A, var(--primary));
-    }
-    
-    .bundle-card.flipped .bundle-product {
-      transform: rotateY(180deg);
-    }
+    .bundle-btn { display: inline-block; padding: 14px 30px; margin-top: 15px; background: linear-gradient(45deg, var(--primary), var(--secondary)); color: white; font-size: 1.1rem; font-weight: bold; border: none; border-radius: 50px; cursor: pointer; text-decoration: none; transition: 0.3s; box-shadow: 0 5px 15px rgba(129, 180, 65, 0.4); }
+    .bundle-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(129, 180, 65, 0.6); background: linear-gradient(45deg, var(--secondary), var(--primary)); }
+    .bundle-card.flipped .bundle-product { transform: rotateY(180deg); }
     
     /* Dropdown styling */
     select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      background-size: 1em;
+      appearance: none; -webkit-appearance: none; -moz-appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ccc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat; background-position: right 1rem center; background-size: 1em;
+      background-color: #333; color: var(--light-text); border: 1px solid #444;
     }
-    
-    select:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(204, 85, 0, 0.2);
-    }
+    select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(129, 180, 65, 0.2); }
 
     /* Quantity Controls */
-    .quantity-controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .quantity-btn {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: white;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.2s ease;
-    }
-    
-    .quantity-btn:hover {
-      background: var(--primary-dark);
-      transform: scale(1.1);
-    }
-    
-    .quantity-input {
-      width: 40px;
-      text-align: center;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      padding: 5px;
-      font-weight: bold;
-    }
+    .quantity-controls { display: flex; align-items: center; gap: 8px; }
+    .quantity-btn { width: 30px; height: 30px; border-radius: 50%; background: var(--primary); color: white; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: bold; transition: all 0.2s ease; }
+    .quantity-btn:hover { background: var(--primary-dark); transform: scale(1.1); }
+    .quantity-input { width: 40px; text-align: center; border: 1px solid #444; border-radius: 4px; padding: 5px; font-weight: bold; background: #333; color: var(--light-text); }
     
     /* Cart Item Styles */
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 0;
-      border-bottom: 1px solid #eee;
-    }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #444; }
+    .cart-item-info { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+    .cart-item-name { font-weight: 600; color: var(--secondary); }
+    .cart-item-price { color: var(--primary); font-weight: 600; }
+    .cart-item-total { font-weight: 600; color: var(--light-text); }
+    .cart-item-controls { display: flex; align-items: center; gap: 15px; }
+    .cart-remove-btn { background: none; border: none; color: #ff4444; cursor: pointer; font-size: 1.2rem; transition: all 0.2s ease; }
+    .cart-remove-btn:hover { color: #cc0000; transform: scale(1.1); }
     
-    .cart-item-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    
-    .cart-item-name {
-      font-weight: 600;
-      color: var(--secondary);
-    }
-    
-    .cart-item-price {
-      color: var(--primary);
-      font-weight: 600;
-    }
-    
-    .cart-item-total {
-      font-weight: 600;
-      color: var(--secondary);
-    }
-    
-    .cart-item-controls {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    
-    .cart-remove-btn {
-      background: none;
-      border: none;
-      color: #ff4444;
-      cursor: pointer;
-      font-size: 1.2rem;
-      transition: all 0.2s ease;
-    }
-    
-    .cart-remove-btn:hover {
-      color: #cc0000;
-      transform: scale(1.1);
-    }
-    
-    /* Cart Modal Close Button */
-    .cart-modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #666;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      z-index: 1002;
-    }
-    
-    .cart-modal-close:hover {
-      background: rgba(0,0,0,0.1);
-      color: #333;
-    }
+    /* Modal Close Buttons */
+    .cart-modal-close, .modal-close-btn { position: absolute; top: 20px; right: 20px; background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--border-gray); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; z-index: 1002; }
+    .cart-modal-close:hover, .modal-close-btn:hover { background: rgba(255,255,255,0.1); color: var(--light-text); }
     
     /* Cart Modal Header */
-    .cart-modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #eee;
-    }
+    .cart-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #444; }
     
     /* Dual Currency Styles */
-    .dual-currency {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-    
-    .price-pkr {
-      font-weight: 600;
-      color: var(--primary);
-    }
-    
-    .price-usd {
-      font-size: 0.85rem;
-      color: #666;
-    }
-    
-    .dual-price-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 10px 0;
-    }
-    
-    .dual-price-container .price-pkr {
-      font-size: 1.4rem;
-      font-weight: bold;
-    }
-    
-    .dual-price-container .price-usd {
-      font-size: 1rem;
-    }
-    
-    /* Product Detail Modal Close Button */
-    .modal-close-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #666;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-    }
-    
-    .modal-close-btn:hover {
-      background: rgba(0,0,0,0.1);
-      color: #333;
-    }
+    .dual-currency { display: flex; flex-direction: column; gap: 3px; }
+    .price-pkr { font-weight: 600; color: var(--primary); }
+    .price-usd { font-size: 0.85rem; color: #aaa; }
+    .dual-price-container { display: flex; flex-direction: column; align-items: center; margin: 10px 0; }
+    .dual-price-container .price-pkr { font-size: 1.4rem; font-weight: bold; }
+    .dual-price-container .price-usd { font-size: 1rem; }
     
     /* Scroll to Top and Bottom Buttons */
-    .scroll-to-top {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 999;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
-      opacity: 0;
-      visibility: hidden;
-    }
-    
-    .scroll-to-bottom {
-      position: fixed;
-      bottom: 150px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 999;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
-      opacity: 0;
-      visibility: hidden;
-    }
-    
-    .scroll-to-top.show,
-    .scroll-to-bottom.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .scroll-to-top:hover,
-    .scroll-to-bottom:hover {
-      background: var(--primary-dark);
-      transform: translateY(-3px);
-    }
+    .scroll-to-top, .scroll-to-bottom { position: fixed; right: 20px; width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; z-index: 999; box-shadow: 0 3px 10px rgba(0,0,0,0.2); transition: all 0.3s ease; opacity: 0; visibility: hidden; }
+    .scroll-to-top { bottom: 90px; }
+    .scroll-to-bottom { bottom: 150px; }
+    .scroll-to-top.show, .scroll-to-bottom.show { opacity: 1; visibility: visible; }
+    .scroll-to-top:hover, .scroll-to-bottom:hover { background: var(--primary-dark); transform: translateY(-3px); }
     
     /* View Details Button */
-    .view-details-btn {
-      display: inline-block;
-      background: transparent;
-      color: var(--primary);
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: 1px solid var(--primary);
-      cursor: pointer;
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-    }
-    
-    .view-details-btn:hover {
-      background: var(--primary);
-      color: white;
-    }
+    .view-details-btn { display: inline-block; background: transparent; color: var(--primary); padding: 0.5rem 1rem; border-radius: 6px; font-weight: 500; text-decoration: none; transition: all 0.3s ease; border: 1px solid var(--primary); cursor: pointer; font-size: 0.9rem; margin-top: 0.5rem; }
+    .view-details-btn:hover { background: var(--primary); color: white; }
 
     /* Responsive Styles */
     @media (max-width: 768px) {
-      .bundles-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 25px;
-      }
-      
-      .bundles-title {
-        font-size: 2.5rem;
-      }
-      
-      .bundle-product-container {
-        height: 280px;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .typewriter {
-        animation: none;
-        border-right: none;
-        white-space: normal;
-      }
-      
-      .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      
-      .cart-item-controls {
-        width: 100%;
-        justify-content: space-between;
-      }
+      .bundles-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+      .bundles-title { font-size: 2.5rem; }
+      .bundle-product-container { height: 280px; }
+      .section-title { font-size: 2rem; }
+      .typewriter { animation: none; border-right: none; white-space: normal; }
+      .cart-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .cart-item-controls { width: 100%; justify-content: space-between; }
     }
   </style>
 </head>
-<body class="min-h-screen bg-lightbg text-dark no-context" oncontextmenu="return false">
+<body class="min-h-screen bg-dark text-light-text no-context" oncontextmenu="return false">
 
   <!-- Navbar -->
-  <header class="sticky top-0 z-40 bg-secondary backdrop-blur border-b border-primary">
+  <header class="sticky top-0 z-40 bg-dark/80 backdrop-blur border-b border-primary-dark/50">
     <div class="container py-3 flex items-center justify-between">
       <a href="https://growzio-jpg.github.io/GrowzioStore/index.html" class="font-extrabold text-xl text-white flex items-center no-select">
         <span class="text-primary mr-1">🔥</span> GROWZIO BUNDLES
@@ -1040,7 +566,7 @@
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="bg-secondary-dark border-t border-primary md:hidden">
+    <div id="mobile-menu" class="bg-dark border-t border-primary-dark/50 md:hidden">
       <div class="px-4 py-3 flex flex-col gap-2">
         <a href="https://growzio-jpg.github.io/GrowzioStore/index.html" class="py-2 nav-link no-select">Home</a>
         <a href="#bundles" class="py-2 nav-link no-select">Bundles</a>
@@ -1049,1310 +575,155 @@
     </div>
   </header>
 
-  <!-- Offer Timer Banner -->
-  <div class="offer-timer text-white text-center py-3 px-4">
-    <div class="container flex flex-col md:flex-row items-center justify-center gap-3">
-      <span class="font-bold text-lg animate-pulse">30% OFF ON ALL BUNDLES - ENDING SOON!</span>
-      <div class="flex items-center gap-2">
-        <span>Ends in:</span>
-        <div class="flex gap-2 items-center">
-          <div class="timer-digit">
-            <span id="hours">23</span>
-            <span class="text-xs block">HRS</span>
-          </div>
-          <span>:</span>
-          <div class="timer-digit">
-            <span id="minutes">59</span>
-            <span class="text-xs block">MIN</span>
-          </div>
-          <span>:</span>
-          <div class="timer-digit">
-            <span id="seconds">59</span>
-            <span class="text-xs block">SEC</span>
-          </div>
-        </div>
-      </div>
-      <a href="#bundles" class="ml-4 bg-primary hover:bg-primary-dark px-3 py-1 rounded text-sm font-medium transition">SHOP NOW</a>
-    </div>
-  </div>
-
-  <!-- Cart Modal - Full Screen -->
-  <dialog id="cart-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
-    <button class="cart-modal-close" onclick="document.getElementById('cart-modal').close()">
-      <i class="fa-solid fa-times"></i>
-    </button>
-    
+  <!-- Cart Modal -->
+  <dialog id="cart-modal">
+    <button class="cart-modal-close" onclick="document.getElementById('cart-modal').close()"><i class="fa-solid fa-times"></i></button>
     <div class="container mx-auto py-6 px-4 h-full flex flex-col">
       <div class="cart-modal-header">
         <h2 class="text-2xl font-bold text-secondary">YOUR CART</h2>
-        <p class="text-gray-600">Review your bundles before checkout</p>
+        <p class="text-gray-400">Review your bundles before checkout</p>
       </div>
-      
       <div id="cart-items" class="flex-1 overflow-y-auto mb-4"></div>
-      
-      <div class="border-t border-gray-300 pt-4 mb-4">
-        <div class="flex justify-between items-center mb-2">
-          <p class="font-medium">Subtotal:</p>
-          <p class="font-medium" id="cart-subtotal">0 PKR</p>
-        </div>
-        <div class="flex justify-between items-center text-lg">
-          <p class="font-bold">Total:</p>
-          <p class="font-bold text-xl text-primary" id="cart-total">0 PKR</p>
-        </div>
+      <div class="border-t border-gray-700 pt-4 mb-4">
+        <div class="flex justify-between items-center mb-2"><p class="font-medium">Subtotal:</p><p class="font-medium" id="cart-subtotal">0 PKR</p></div>
+        <div class="flex justify-between items-center text-lg"><p class="font-bold">Total:</p><p class="font-bold text-xl text-primary" id="cart-total">0 PKR</p></div>
       </div>
-
-      <!-- Payment Method Dropdown -->
       <div class="mb-4">
         <label for="payment-method" class="block mb-2 font-medium">Select Payment Method:</label>
-        <select id="payment-method" class="w-full p-3 rounded bg-white border border-gray-300 text-dark">
-          <option value="">-- Select Payment Method --</option>
-          <option value="jazzcash">JazzCash</option>
-          <option value="easypaisa">Easypaisa</option>
-          <option value="binance">Binance</option>
-        </select>
+        <select id="payment-method" class="w-full p-3 rounded"><option value="">-- Select --</option><option value="jazzcash">JazzCash</option><option value="easypaisa">Easypaisa</option><option value="binance">Binance</option></select>
       </div>
-
       <div class="flex justify-between gap-4">
-        <button onclick="document.getElementById('cart-modal').close()" class="px-6 py-3 rounded bg-gray-200 hover:bg-gray-300 transition flex-1">Continue Shopping</button>
+        <button onclick="document.getElementById('cart-modal').close()" class="px-6 py-3 rounded bg-gray-700 hover:bg-gray-600 transition flex-1">Continue Shopping</button>
         <button id="proceed-to-payment" class="px-6 py-3 rounded bg-primary hover:bg-primary-dark text-white transition flex-1">Proceed to Checkout</button>
       </div>
     </div>
   </dialog>
 
   <!-- Added to Cart Modal -->
-  <dialog id="added-to-cart-modal" class="rounded-xl p-6 bg-white text-dark max-w-md w-full shadow-xl">
+  <dialog id="added-to-cart-modal" class="rounded-xl p-6 w-full shadow-xl">
     <div class="text-center">
       <i class="fa-solid fa-check-circle text-green-500 text-5xl mb-4"></i>
       <h2 class="text-xl font-bold mb-2">Bundle Added to Cart!</h2>
-      <p class="text-gray-600 mb-6" id="added-item-name">Your bundle has been successfully added to your cart.</p>
-      
+      <p class="text-gray-400 mb-6" id="added-item-name"></p>
       <div class="flex justify-center gap-4">
-        <button id="continue-shopping" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">OK</button>
+        <button id="continue-shopping" class="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600">OK</button>
         <button id="view-cart" class="px-4 py-2 rounded bg-primary hover:bg-primary-dark text-white">View Cart</button>
       </div>
     </div>
   </dialog>
 
   <!-- Product Detail Modal -->
-  <dialog id="product-detail-modal" class="rounded-xl p-6 bg-white text-dark w-full shadow-xl">
-    <button class="modal-close-btn" onclick="document.getElementById('product-detail-modal').close()">
-      <i class="fa-solid fa-times"></i>
-    </button>
-    <div id="product-detail-content" class="mt-4">
-      <!-- Product details will be inserted here -->
-    </div>
+  <dialog id="product-detail-modal">
+    <button class="modal-close-btn" onclick="document.getElementById('product-detail-modal').close()"><i class="fa-solid fa-times"></i></button>
+    <div id="product-detail-content" class="mt-4"></div>
   </dialog>
 
   <!-- Main Website Content -->
   <div id="main-content">
     <!-- Hero -->
-    <section id="home" class="section relative bg-gradient-to-br from-secondary to-secondary-dark text-white">
-      <div class="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80" alt="Digital bundles background" class="w-full h-full object-cover opacity-10">
-      </div>
-      <div class="container text-center">
-        <h1 class="section-title mb-4 text-white" data-aos="fade-down" data-aos-duration="1000">
-          <span class="gradient-text">Exclusive Digital Bundles</span> in Pakistan at Lowest Prices
+    <section id="home" class="section relative bg-dark">
+      <div class="absolute inset-0 bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=80');"></div>
+      <div class="hero-overlay"></div>
+      <div class="container text-center relative z-10">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-4 text-white" data-aos="fade-down" data-aos-duration="1000">
+          Exclusive Digital Bundles
         </h1>
-        <p class="section-subtitle text-gray-200" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Get premium content creator packs, marketing toolkits, and professional resources. Pay easily via JazzCash, Easypaisa & Binance with instant delivery.</p>
-
-        <!-- Trust badges -->
+        <p class="section-subtitle text-gray-300" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Get premium content creator packs, marketing toolkits, and professional resources. Pay easily via JazzCash, Easypaisa & Binance with instant delivery.</p>
         <div class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-          <div class="trust-badge float-animation">
-            <i class="fa-solid fa-bolt text-primary text-2xl mb-2"></i>
-            <p class="text-sm">Instant Delivery</p>
-          </div>
-          <div class="trust-badge float-animation" style="animation-delay: 0.5s;">
-            <i class="fa-solid fa-shield-halved text-primary text-2xl mb-2"></i>
-            <p class="text-sm">100% Genuine</p>
-          </div>
-          <div class="trust-badge float-animation" style="animation-delay: 1s;">
-            <i class="fa-solid fa-headset text-primary text-2xl mb-2"></i>
-            <p class="text-sm">24/7 Support</p>
-          </div>
-          <div class="trust-badge float-animation" style="animation-delay: 1.5s;">
-            <i class="fa-solid fa-lock text-primary text-2xl mb-2"></i>
-            <p class="text-sm">Secure Payment</p>
-          </div>
+          <div class="trust-badge float-animation"><i class="fa-solid fa-bolt text-primary text-2xl mb-2"></i><p class="text-sm">Instant Delivery</p></div>
+          <div class="trust-badge float-animation" style="animation-delay: 0.5s;"><i class="fa-solid fa-shield-halved text-primary text-2xl mb-2"></i><p class="text-sm">100% Genuine</p></div>
+          <div class="trust-badge float-animation" style="animation-delay: 1s;"><i class="fa-solid fa-headset text-primary text-2xl mb-2"></i><p class="text-sm">24/7 Support</p></div>
+          <div class="trust-badge float-animation" style="animation-delay: 1.5s;"><i class="fa-solid fa-lock text-primary text-2xl mb-2"></i><p class="text-sm">Secure Payment</p></div>
         </div>
-
-        <div class="mb-6 bg-primary/20 border border-primary rounded-lg p-3 inline-block" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
-          <span class="font-bold text-primary">Special Limited Offer: 30% OFF on all bundles!</span>
-        </div>
-        <br>
         <div class="flex flex-col sm:flex-row justify-center gap-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
           <a href="#bundles" class="btn shine mb-3 sm:mb-0">Browse All Bundles</a>
-          <a href="#contact" class="btn btn-outline text-white border-white hover:text-dark">Contact Us</a>
+          <a href="#contact" class="btn btn-outline text-white border-white hover:text-white">Contact Us</a>
         </div>
       </div>
     </section>
 
     <!-- Bundles Section -->
-    <section id="bundles" class="section bg-white">
+    <section id="bundles" class="section bg-dark">
       <div class="container">
         <div class="bundles-header" data-aos="fade-up">
           <h1 class="bundles-title">DIGITAL BUNDLES</h1>
           <p class="bundles-subtitle">Premium content creator packs, marketing toolkits, and professional resources for your digital journey</p>
         </div>
-        
-        <div class="bundles-grid" id="bundles-list">
-          <!-- Bundles will be dynamically loaded here -->
-        </div>
+        <div class="bundles-grid" id="bundles-list"></div>
       </div>
     </section>
 
     <!-- Back to Home Button Section -->
-    <section class="section bg-white text-center pt-0">
-        <div class="container">
-            <a href="https://growzio-jpg.github.io/GrowzioStore/index.html" class="btn shine">
-                <i class="fa-solid fa-arrow-left mr-2"></i> Back To Home
-            </a>
-        </div>
+    <section class="section bg-dark text-center pt-0">
+        <div class="container"><a href="https://growzio-jpg.github.io/GrowzioStore/index.html" class="btn shine"><i class="fa-solid fa-arrow-left mr-2"></i> Back To Home</a></div>
     </section>
 
     <!-- Contact -->
     <section id="contact" class="section bg-lightbg">
       <div class="container text-center">
         <h2 class="section-title" data-aos="fade-up">CONTACT US</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Reach out to us for orders, support, or any questions</p>
-        
-        <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="300">
-          <div class="mb-6">
-            <h3 class="text-xl font-bold mb-4">Business Hours</h3>
-            <p class="text-gray-600">24/7 Support Available</p>
-          </div>
-          
-          <div class="mb-6">
-            <h3 class="text-xl font-bold mb-4">Contact Information</h3>
-            <p class="text-gray-600 mb-2"><i class="fa-brands fa-whatsapp text-green-500 mr-2"></i> WhatsApp: <strong>+92 319 5179084</strong></p>
-            <p class="text-gray-600"><i class="fa-solid fa-envelope text-primary mr-2"></i> Email: <strong>info@growzio.com</strong></p>
-          </div>
-          
-          <div>
-            <h3 class="text-xl font-bold mb-4">Follow Us</h3>
-            <div class="flex justify-center gap-6 text-2xl">
-              <a href="https://wa.me/923195179084" target="_blank" class="text-green-500 hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a>
-              <a href="https://whatsapp.com/channel/0029VbAuTTnFSAsxVXWEIK22" target="_blank" class="text-primary hover:scale-110 transition"><i class="fa-solid fa-bullhorn"></i></a>
-              <a href="https://www.tiktok.com/@its_hannni?_t=ZT-8yvAKY2JQp3&_r=1" target="_blank" class="text-pink-500 hover:scale-110 transition"><i class="fa-brands fa-tiktok"></i></a>
-              <a href="https://www.instagram.com" target="_blank" class="text-pink-600 hover:scale-110 transition"><i class="fa-brands fa-instagram"></i></a>
-              <a href="https://www.instagram.com" target="_blank" class="text-blue-500 hover:scale-110 transition"><i class="fa-brands fa-twitter"></i></a>
-            </div>
-          </div>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Reach out for orders, support, or any questions</p>
+        <div class="max-w-md mx-auto bg-dark p-6 rounded-lg shadow-md border border-gray-700" data-aos="zoom-in" data-aos-delay="300">
+          <div class="mb-6"><h3 class="text-xl font-bold mb-4">Business Hours</h3><p class="text-gray-400">24/7 Support Available</p></div>
+          <div class="mb-6"><h3 class="text-xl font-bold mb-4">Contact Information</h3><p class="text-gray-400 mb-2"><i class="fa-brands fa-whatsapp text-whatsapp-green mr-2"></i> WhatsApp: <strong>+92 319 5179084</strong></p><p class="text-gray-400"><i class="fa-solid fa-envelope text-primary mr-2"></i> Email: <strong>info@growzio.com</strong></p></div>
+          <div><h3 class="text-xl font-bold mb-4">Follow Us</h3><div class="flex justify-center gap-6 text-2xl"><a href="https://wa.me/923195179084" target="_blank" class="text-whatsapp-green hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a><a href="https://whatsapp.com/channel/0029VbAuTTnFSAsxVXWEIK22" target="_blank" class="text-primary hover:scale-110 transition"><i class="fa-solid fa-bullhorn"></i></a><a href="https://www.tiktok.com/@its_hannni?_t=ZT-8yvAKY2JQp3&_r=1" target="_blank" class="text-tailwind-pink hover:scale-110 transition"><i class="fa-brands fa-tiktok"></i></a><a href="https://www.instagram.com" target="_blank" class="text-instagram-pink hover:scale-110 transition"><i class="fa-brands fa-instagram"></i></a><a href="https://www.instagram.com" target="_blank" class="text-tailwind-blue hover:scale-110 transition"><i class="fa-brands fa-twitter"></i></a></div></div>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-secondary text-gray-200 py-12 mt-16 border-t border-primary">
+    <footer class="bg-dark text-gray-400 py-12 mt-16 border-t border-primary-dark/50">
       <div class="container">
         <div class="grid md:grid-cols-4 gap-8">
-          <div>
-            <h3 class="text-white text-lg font-bold mb-4">GROWZIO BUNDLES</h3>
-            <p class="mb-4">Your trusted source for premium digital bundles in Pakistan at affordable prices.</p>
-            <div class="flex gap-4">
-              <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-twitter"></i></a>
-              <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-instagram"></i></a>
-              <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-tiktok"></i></a>
-            </div>
-          </div>
-          
-          <div>
-            <h3 class="text-white text-lg font-bold mb-4">QUICK LINKS</h3>
-            <ul class="space-y-2">
-              <li><a href="https://growzio-jpg.github.io/GrowzioStore/index.html" class="text-gray-300 hover:text-primary">Home</a></li>
-              <li><a href="#bundles" class="text-gray-300 hover:text-primary">Bundles</a></li>
-              <li><a href="#contact" class="text-gray-300 hover:text-primary">Contact</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 class="text-white text-lg font-bold mb-4">SUPPORT</h3>
-            <ul class="space-y-2">
-              <li><a href="#contact" class="text-gray-300 hover:text-primary">Contact Us</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-primary" id="terms-link">Terms of Service</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-primary" id="refund-policy-link">Refund Policy</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-primary" id="privacy-policy-link">Privacy Policy</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 class="text-white text-lg font-bold mb-4">NEWSLETTER</h3>
-            <p class="mb-4">Subscribe to get special offers and new bundle updates</p>
-            <form class="flex flex-col gap-2">
-              <input type="email" placeholder="Your email" class="px-4 py-2 rounded bg-secondary-dark border border-gray-600 text-white placeholder-gray-400">
-              <button type="submit" class="btn bg-primary hover:bg-primary-dark">Subscribe</button>
-            </form>
-          </div>
+          <div><h3 class="text-white text-lg font-bold mb-4">GROWZIO BUNDLES</h3><p class="mb-4">Your trusted source for premium digital bundles in Pakistan at affordable prices.</p><div class="flex gap-4"><a href="#" class="hover:text-primary"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="hover:text-primary"><i class="fa-brands fa-twitter"></i></a><a href="#" class="hover:text-primary"><i class="fa-brands fa-instagram"></i></a><a href="#" class="hover:text-primary"><i class="fa-brands fa-tiktok"></i></a></div></div>
+          <div><h3 class="text-white text-lg font-bold mb-4">QUICK LINKS</h3><ul class="space-y-2"><li><a href="#" class="hover:text-primary">Home</a></li><li><a href="#bundles" class="hover:text-primary">Bundles</a></li><li><a href="#contact" class="hover:text-primary">Contact</a></li></ul></div>
+          <div><h3 class="text-white text-lg font-bold mb-4">SUPPORT</h3><ul class="space-y-2"><li><a href="#contact" class="hover:text-primary">Contact Us</a></li><li><a href="#" id="terms-link" class="hover:text-primary">Terms of Service</a></li><li><a href="#" id="refund-policy-link" class="hover:text-primary">Refund Policy</a></li><li><a href="#" id="privacy-policy-link" class="hover:text-primary">Privacy Policy</a></li></ul></div>
+          <div><h3 class="text-white text-lg font-bold mb-4">NEWSLETTER</h3><p class="mb-4">Subscribe to get special offers and new bundle updates</p><form class="flex flex-col gap-2"><input type="email" placeholder="Your email" class="px-4 py-2 rounded bg-lightbg border border-gray-600 text-white placeholder-gray-500"><button type="submit" class="btn bg-primary hover:bg-primary-dark">Subscribe</button></form></div>
         </div>
-        
-        <div class="border-t border-gray-600 mt-8 pt-8 text-center">
-          <p>© 2025 GROWZIO BUNDLES. All rights reserved.</p>
-        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center"><p>© 2025 GROWZIO BUNDLES. All rights reserved.</p></div>
       </div>
     </footer>
 
-    <!-- WhatsApp Floating -->
-    <a href="https://wa.me/923195179084" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <!-- Scroll to Top Button -->
-    <div class="scroll-to-top" id="scrollToTop">
-      <i class="fa-solid fa-chevron-up"></i>
-    </div>
-
-    <!-- Scroll to Bottom Button -->
-    <div class="scroll-to-bottom" id="scrollToBottom">
-      <i class="fa-solid fa-chevron-down"></i>
-    </div>
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/923195179084" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <div class="scroll-to-top" id="scrollToTop"><i class="fa-solid fa-chevron-up"></i></div>
+    <div class="scroll-to-bottom" id="scrollToBottom"><i class="fa-solid fa-chevron-down"></i></div>
   </div>
 
   <!-- Payment Page (initially hidden) -->
-  <div id="payment-page" class="hidden">
-    <!-- Header -->
-    <header class="header bg-secondary">
-      <div class="container mx-auto px-4 flex items-center justify-between py-3">
-        <a href="#" class="font-extrabold text-xl text-white flex items-center">
-          <span class="text-primary mr-1">🔥</span> GROWZIO BUNDLES
-        </a>
-        
-        <div class="flex items-center gap-4">
-          <a href="https://wa.me/923195179084" target="_blank" class="text-white hover:text-primary">
-            <i class="fa-brands fa-whatsapp text-2xl"></i>
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <!-- Payment Container -->
+  <div id="payment-page" class="hidden bg-dark">
+    <header class="bg-dark border-b border-primary-dark/50"><div class="container mx-auto px-4 flex items-center justify-between py-3"><a href="#" class="font-extrabold text-xl text-white flex items-center"><span class="text-primary mr-1">🔥</span> GROWZIO BUNDLES</a><div class="flex items-center gap-4"><a href="https://wa.me/923195179084" target="_blank" class="text-white hover:text-primary"><i class="fa-brands fa-whatsapp text-2xl"></i></a></div></div></header>
     <div class="container mx-auto py-8 px-4">
-      <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+      <div class="max-w-4xl mx-auto bg-lightbg rounded-xl shadow-lg overflow-hidden border border-gray-700">
         <div class="p-6">
-          <div class="text-center mb-6">
-            <h1 class="text-3xl font-bold mb-2">Complete Your Payment</h1>
-            <p class="text-gray-600">Select your preferred payment method</p>
-          </div>
-          
-          <!-- Order Summary -->
-          <div class="bg-gray-50 rounded-lg p-4 mb-6">
-            <h2 class="text-xl font-bold mb-4">Order Summary</h2>
-            <div id="payment-order-items"></div>
-            <div class="border-t border-gray-300 mt-4 pt-4">
-              <div class="flex justify-between items-center text-lg">
-                <span class="font-bold">Total:</span>
-                <span class="font-bold text-xl text-primary" id="payment-total">0 PKR</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Payment Options -->
+          <div class="text-center mb-6"><h1 class="text-3xl font-bold mb-2">Complete Your Payment</h1><p class="text-gray-400">Select your preferred payment method</p></div>
+          <div class="bg-dark rounded-lg p-4 mb-6 border border-gray-700"><h2 class="text-xl font-bold mb-4">Order Summary</h2><div id="payment-order-items"></div><div class="border-t border-gray-700 mt-4 pt-4"><div class="flex justify-between items-center text-lg"><span class="font-bold">Total:</span><span class="font-bold text-xl text-primary" id="payment-total">0 PKR</span></div></div></div>
           <div class="grid md:grid-cols-3 gap-6 mb-6">
-            <!-- JazzCash Option -->
-            <div class="payment-option border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors">
-              <div class="payment-logo mb-4">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV5FPCt1eX4NPeEhoEEI_XIugL1Rf82_VV5w&s" alt="JazzCash" class="h-12 mx-auto">
-              </div>
-              <h3 class="font-bold text-lg mb-3 text-center">JazzCash</h3>
-              
-              <div class="payment-details bg-gray-50 rounded p-3 mb-3">
-                <div class="payment-detail-item flex justify-between mb-2">
-                  <span>Name:</span>
-                  <span class="font-medium">Khairunisa</span>
-                </div>
-                <div class="payment-detail-item flex justify-between">
-                  <span>Number:</span>
-                  <span class="font-medium">03295478732</span>
-                </div>
-              </div>
-              
-              <div class="payment-instruction bg-primary/10 p-3 rounded text-sm">
-                <p>After making the payment, please send the screenshot to our WhatsApp for verification.</p>
-              </div>
-            </div>
-            
-            <!-- Easypaisa Option -->
-            <div class="payment-option border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors">
-              <div class="payment-logo mb-4">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyo6DN_GfIK50Hp-q01KOFS1gYt1KQFt2p4-e9jb4k-w&s" alt="Easypaisa" class="h-12 mx-auto">
-              </div>
-              <h3 class="font-bold text-lg mb-3 text-center">Easypaisa</h3>
-              
-              <div class="payment-details bg-gray-50 rounded p-3 mb-3">
-                <div class="payment-detail-item flex justify-between mb-2">
-                  <span>Name:</span>
-                  <span class="font-medium">Khairunisa</span>
-                </div>
-                <div class="payment-detail-item flex justify-between">
-                  <span>Number:</span>
-                  <span class="font-medium">03325982480</span>
-                </div>
-              </div>
-              
-              <div class="payment-instruction bg-primary/10 p-3 rounded text-sm">
-                <p>After making the payment, please send the screenshot to our WhatsApp for verification.</p>
-              </div>
-            </div>
-            
-            <!-- Binance Option -->
-            <div class="payment-option border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors">
-              <div class="payment-logo mb-4">
-                <img src="https://public.bnbstatic.com/image/cms/blog/20190218/62cb8eb1-77bd-4b71-9519-f2f216d90b28.png" alt="Binance" class="h-12 mx-auto">
-              </div>
-              <h3 class="font-bold text-lg mb-3 text-center">Binance (Crypto)</h3>
-              
-              <div class="payment-details bg-gray-50 rounded p-3 mb-3">
-                <div class="payment-detail-item flex justify-between mb-2">
-                  <span>Pay ID/UID:</span>
-                  <span class="font-medium">14245485</span>
-                </div>
-                <div class="payment-detail-item flex justify-between">
-                  <span>Name:</span>
-                  <span class="font-medium">Khairunisa</span>
-                </div>
-              </div>
-              
-              <div class="payment-instruction bg-primary/10 p-3 rounded text-sm">
-                <p>After making the payment, please send the transaction details to our WhatsApp for verification.</p>
-              </div>
-            </div>
+            <div class="payment-option border border-gray-700 rounded-lg p-4 hover:border-primary transition-colors bg-dark"><div class="payment-logo mb-4"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV5FPCt1eX4NPeEhoEEI_XIugL1Rf82_VV5w&s" alt="JazzCash" class="h-12 mx-auto bg-white p-1 rounded"></div><h3 class="font-bold text-lg mb-3 text-center">JazzCash</h3><div class="payment-details bg-lightbg rounded p-3 mb-3 border border-gray-700"><div class="flex justify-between mb-2"><span>Name:</span><span class="font-medium">Khairunisa</span></div><div class="flex justify-between"><span>Number:</span><span class="font-medium">03295478732</span></div></div><div class="payment-instruction bg-primary/10 p-3 rounded text-sm text-primary-light"><p>Send screenshot to WhatsApp for verification.</p></div></div>
+            <div class="payment-option border border-gray-700 rounded-lg p-4 hover:border-primary transition-colors bg-dark"><div class="payment-logo mb-4"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyo6DN_GfIK50Hp-q01KOFS1gYt1KQFt2p4-e9jb4k-w&s" alt="Easypaisa" class="h-12 mx-auto bg-white p-1 rounded"></div><h3 class="font-bold text-lg mb-3 text-center">Easypaisa</h3><div class="payment-details bg-lightbg rounded p-3 mb-3 border border-gray-700"><div class="flex justify-between mb-2"><span>Name:</span><span class="font-medium">Khairunisa</span></div><div class="flex justify-between"><span>Number:</span><span class="font-medium">03325982480</span></div></div><div class="payment-instruction bg-primary/10 p-3 rounded text-sm text-primary-light"><p>Send screenshot to WhatsApp for verification.</p></div></div>
+            <div class="payment-option border border-gray-700 rounded-lg p-4 hover:border-primary transition-colors bg-dark"><div class="payment-logo mb-4"><img src="https://public.bnbstatic.com/image/cms/blog/20190218/62cb8eb1-77bd-4b71-9519-f2f216d90b28.png" alt="Binance" class="h-12 mx-auto bg-white p-1 rounded"></div><h3 class="font-bold text-lg mb-3 text-center">Binance (Crypto)</h3><div class="payment-details bg-lightbg rounded p-3 mb-3 border border-gray-700"><div class="flex justify-between mb-2"><span>Pay ID/UID:</span><span class="font-medium">14245485</span></div><div class="flex justify-between"><span>Name:</span><span class="font-medium">Khairunisa</span></div></div><div class="payment-instruction bg-primary/10 p-3 rounded text-sm text-primary-light"><p>Send transaction details to WhatsApp for verification.</p></div></div>
           </div>
-          
           <button class="confirm-payment-btn w-full py-3 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg transition-colors" onclick="confirmPayment()">I've Made the Payment</button>
-          
-          <div class="mt-4 text-center">
-            <button onclick="goBackToShopping()" class="text-primary hover:underline">
-              <i class="fa-solid fa-arrow-left mr-2"></i> Back to Shopping
-            </button>
-          </div>
+          <div class="mt-4 text-center"><button onclick="goBackToShopping()" class="text-primary hover:underline"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Shopping</button></div>
         </div>
       </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer bg-secondary text-white py-6 mt-8">
-      <div class="container mx-auto px-4 text-center">
-        <p>© 2025 GROWZIO BUNDLES. All rights reserved.</p>
-        <p class="text-gray-300 mt-2">WhatsApp: +92 319 5179084</p>
-      </div>
-    </footer>
-
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/923195179084" target="_blank" class="whatsapp-float">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <footer class="bg-dark text-white py-6 mt-8 border-t border-primary-dark/50"><div class="container mx-auto px-4 text-center"><p>© 2025 GROWZIO BUNDLES. All rights reserved.</p><p class="text-gray-400 mt-2">WhatsApp: +92 319 5179084</p></div></footer>
   </div>
 
   <!-- Policy Modals -->
-  <!-- Privacy Policy Modal -->
-  <dialog id="privacy-policy-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
-    <button class="cart-modal-close" onclick="document.getElementById('privacy-policy-modal').close()">
-      <i class="fa-solid fa-times"></i>
-    </button>
-    
-    <div class="container mx-auto py-6 px-4 h-full overflow-y-auto">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold text-secondary mb-2 text-center">Privacy Policy</h1>
-        <p class="text-center text-gray-600 mb-8">Last updated: January 2025</p>
-        
-        <div class="bg-white rounded-lg p-6">
-          <h2 class="text-2xl font-semibold text-secondary mb-4">1. Information We Collect</h2>
-          <p class="mb-4">We may collect the following types of information:</p>
-          <ul class="list-disc pl-6 mb-6">
-            <li class="mb-2">Personal identification information (name, email address, phone number)</li>
-            <li class="mb-2">Payment information (processed securely through third-party providers)</li>
-            <li class="mb-2">Account credentials for the services you purchase</li>
-            <li class="mb-2">Communication records when you contact our support team</li>
-          </ul>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">2. How We Use Your Information</h2>
-          <p class="mb-4">We use the information we collect to:</p>
-          <ul class="list-disc pl-6 mb-6">
-            <li class="mb-2">Process your orders and deliver purchased services</li>
-            <li class="mb-2">Provide customer support and respond to inquiries</li>
-            <li class="mb-2">Improve our services and user experience</li>
-            <li class="mb-2">Send important updates about your account or our services</li>
-          </ul>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">3. Data Security</h2>
-          <p class="mb-6">We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">4. Third-Party Services</h2>
-          <p class="mb-6">We use third-party payment processors (JazzCash, Easypaisa, Binance) to handle financial transactions. These providers have their own privacy policies governing the use of your information.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">5. Your Rights</h2>
-          <p class="mb-4">You have the right to:</p>
-          <ul class="list-disc pl-6 mb-6">
-            <li class="mb-2">Access the personal information we hold about you</li>
-            <li class="mb-2">Request correction of inaccurate information</li>
-            <li class="mb-2">Request deletion of your personal information</li>
-            <li class="mb-2">Object to processing of your personal information</li>
-          </ul>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">6. Contact Us</h2>
-          <p class="mb-4">If you have any questions about this Privacy Policy or our data practices, please contact us at:</p>
-          <div class="bg-gray-100 p-4 rounded-lg border-l-4 border-primary">
-            <p class="mb-2"><strong>Email:</strong> privacy@growzio.com</p>
-            <p class="mb-2"><strong>WhatsApp:</strong> +92 319 5179084</p>
-            <p class="mb-0"><strong>Business Hours:</strong> 24/7 Support Available</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Terms of Service Modal -->
-  <dialog id="terms-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
-    <button class="cart-modal-close" onclick="document.getElementById('terms-modal').close()">
-      <i class="fa-solid fa-times"></i>
-    </button>
-    
-    <div class="container mx-auto py-6 px-4 h-full overflow-y-auto">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold text-secondary mb-2 text-center">Terms of Service</h1>
-        <p class="text-center text-gray-600 mb-8">Last updated: January 2025</p>
-        
-        <div class="bg-white rounded-lg p-6">
-          <h2 class="text-2xl font-semibold text-secondary mb-4">1. Acceptance of Terms</h2>
-          <p class="mb-6">By accessing or using GROWZIO's services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using our services.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">2. Services Description</h2>
-          <p class="mb-6">GROWZIO provides digital services including premium app subscriptions, IPTV services, gaming top-ups, digital bundles, and eBooks. All services are delivered electronically after successful payment verification.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">3. Account Registration</h2>
-          <p class="mb-6">Some services may require account registration. You agree to provide accurate and complete information during registration and to keep this information updated.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">4. Payment Terms</h2>
-          <p class="mb-4">All payments are processed through secure third-party payment processors. By making a purchase, you agree to:</p>
-          <ul class="list-disc pl-6 mb-6">
-            <li class="mb-2">Provide accurate payment information</li>
-            <li class="mb-2">Pay all charges incurred by your account</li>
-            <li class="mb-2">Authorize GROWZIO to charge your chosen payment method</li>
-            <li class="mb-2">Understand that all sales are final unless otherwise stated in our Refund Policy</li>
-          </ul>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">5. Service Delivery</h2>
-          <p class="mb-6">Digital services are typically delivered instantly after payment verification. In some cases, delivery may take up to 24 hours. You will receive your service credentials via WhatsApp or email.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">6. User Responsibilities</h2>
-          <p class="mb-4">You agree to:</p>
-          <ul class="list-disc pl-6 mb-6">
-            <li class="mb-2">Use services only for lawful purposes</li>
-            <li class="mb-2">Not share account credentials with unauthorized users</li>
-            <li class="mb-2">Not attempt to circumvent any security measures</li>
-            <li class="mb-2">Not use services to infringe on intellectual property rights</li>
-            <li class="mb-2">Comply with all applicable laws and regulations</li>
-          </ul>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">7. Intellectual Property</h2>
-          <p class="mb-6">All content, trademarks, and data on this website, including software, databases, text, graphics, icons, hyperlinks, and designs are the property of GROWZIO or licensed to GROWZIO.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">8. Limitation of Liability</h2>
-          <p class="mb-6">GROWZIO shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use our services.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">9. Service Modifications</h2>
-          <p class="mb-6">GROWZIO reserves the right to modify or discontinue any service with or without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuance of service.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">10. Termination</h2>
-          <p class="mb-6">We may terminate or suspend your access to our services immediately, without prior notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties, or for any other reason.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">11. Governing Law</h2>
-          <p class="mb-6">These Terms shall be governed by and construed in accordance with the laws of Pakistan, without regard to its conflict of law provisions.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">12. Changes to Terms</h2>
-          <p class="mb-6">We reserve the right to modify these terms at any time. We will notify users of any changes by updating the "Last updated" date of these Terms of Service.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">13. Contact Information</h2>
-          <p class="mb-4">For any questions about these Terms of Service, please contact us:</p>
-          <div class="bg-gray-100 p-4 rounded-lg border-l-4 border-primary">
-            <p class="mb-2"><strong>Email:</strong> legal@growzio.com</p>
-            <p class="mb-2"><strong>WhatsApp:</strong> +92 319 5179084</p>
-            <p class="mb-0"><strong>Business Hours:</strong> 24/7 Support Available</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Refund Policy Modal -->
-  <dialog id="refund-policy-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
-    <button class="cart-modal-close" onclick="document.getElementById('refund-policy-modal').close()">
-      <i class="fa-solid fa-times"></i>
-    </button>
-    
-    <div class="container mx-auto py-6 px-4 h-full overflow-y-auto">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold text-secondary mb-2 text-center">Refund Policy</h1>
-        <p class="text-center text-gray-600 mb-8">Last updated: January 2025</p>
-        
-        <div class="bg-white rounded-lg p-6">
-          <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-6 text-center">
-            <p class="text-orange-700 font-semibold">Please read this policy carefully before making a purchase</p>
-          </div>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">1. Digital Products Refund Policy</h2>
-          <p class="mb-6">Due to the nature of digital products, all sales are typically final. However, we understand that sometimes issues may occur, and we have established the following refund guidelines:</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">2. Eligibility for Refund</h2>
-          <p class="mb-4">Refunds may be considered under the following circumstances:</p>
-          <ul class="list-disc pl-6 mb-6">
-            <li class="mb-2"><strong>Service Failure:</strong> If the purchased service does not work as described</li>
-            <li class="mb-2"><strong>Non-Delivery:</strong> If you do not receive the service within 24 hours of payment</li>
-            <li class="mb-2"><strong>Duplicate Payment:</strong> If you were charged multiple times for the same order</li>
-            <li class="mb-2"><strong>Technical Issues:</strong> If there are technical problems from our side preventing service delivery</li>
-          </ul>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">3. Non-Refundable Situations</h2>
-          <p class="mb-4">Refunds will not be provided in the following cases:</p>
-          <ul class="list-disc pl-6 mb-6">
-            <li class="mb-2">Change of mind after purchase</li>
-            <li class="mb-2">Failure to meet system requirements for the service</li>
-            <li class="mb-2">Issues with third-party services beyond our control</li>
-            <li class="mb-2">Violation of terms of service</li>
-            <li class="mb-2">Incorrect ordering or user error</li>
-            <li class="mb-2">Expired subscriptions or time-limited services</li>
-          </ul>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">4. Refund Timeframe</h2>
-          <p class="mb-6">Refund requests must be submitted within 7 days of purchase. After this period, refund requests will not be considered.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">5. How to Request a Refund</h2>
-          <p class="mb-4">To request a refund, please contact our support team with the following information:</p>
-          <ul class="list-disc pl-6 mb-6">
-            <li class="mb-2">Your order details (product name, purchase date)</li>
-            <li class="mb-2">Payment transaction ID</li>
-            <li class="mb-2">Reason for refund request</li>
-            <li class="mb-2">Screenshots or evidence supporting your claim</li>
-          </ul>
-          <div class="bg-gray-100 p-4 rounded-lg mb-6">
-            <p><strong>Contact Support:</strong> WhatsApp +92 319 5179084</p>
-          </div>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">6. Refund Processing</h2>
-          <p class="mb-4">Approved refunds will be processed within 5-7 business days. The refund will be issued to the original payment method used for the purchase.</p>
-          <ul class="list-disc pl-6 mb-6">
-            <li class="mb-2"><strong>JazzCash/Easypaisa:</strong> Refunds processed within 24-48 hours</li>
-            <li class="mb-2"><strong>Binance:</strong> Crypto refunds processed within 3-5 business days</li>
-            <li class="mb-2"><strong>Bank Transfer:</strong> May take 5-7 business days</li>
-          </ul>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">7. Service-Specific Policies</h2>
-          <div class="mb-4">
-            <h3 class="text-xl font-semibold text-primary mb-2">Premium App Subscriptions</h3>
-            <p class="mb-4">Refunds are only provided if the service is completely non-functional and our support team cannot resolve the issue.</p>
-          </div>
-          <div class="mb-4">
-            <h3 class="text-xl font-semibold text-primary mb-2">IPTV Services</h3>
-            <p class="mb-4">Refunds may be considered if the service experiences prolonged downtime (more than 48 hours) that is not due to user-side issues.</p>
-          </div>
-          <div class="mb-4">
-            <h3 class="text-xl font-semibold text-primary mb-2">Gaming Top-ups</h3>
-            <p class="mb-4">No refunds once the top-up has been processed and delivered to your gaming account.</p>
-          </div>
-          <div class="mb-6">
-            <h3 class="text-xl font-semibold text-primary mb-2">Digital Bundles & eBooks</h3>
-            <p class="mb-0">No refunds once the download link has been provided or the content has been accessed.</p>
-          </div>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">8. Dispute Resolution</h2>
-          <p class="mb-6">Before filing a dispute with your payment provider, please contact our support team to resolve the issue. We're committed to finding a fair solution for all parties involved.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">9. Policy Changes</h2>
-          <p class="mb-6">We reserve the right to modify this refund policy at any time. Changes will be effective immediately upon posting to the website.</p>
-          
-          <h2 class="text-2xl font-semibold text-secondary mb-4">10. Contact Information</h2>
-          <p class="mb-4">For refund requests or questions about this policy, please contact us:</p>
-          <div class="bg-gray-100 p-4 rounded-lg border-l-4 border-primary">
-            <p class="mb-2"><strong>WhatsApp Support:</strong> +92 319 5179084</p>
-            <p class="mb-2"><strong>Email:</strong> support@growzio.com</p>
-            <p class="mb-0"><strong>Response Time:</strong> Typically within 1-2 hours during business hours</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </dialog>
+  <dialog id="privacy-policy-modal"><button class="cart-modal-close" onclick="document.getElementById('privacy-policy-modal').close()"><i class="fa-solid fa-times"></i></button><div class="container mx-auto py-6 px-4 h-full overflow-y-auto"><div class="max-w-4xl mx-auto"><h1 class="text-3xl font-bold text-secondary mb-2 text-center">Privacy Policy</h1><p class="text-center text-gray-400 mb-8">Last updated: January 2025</p><div class="bg-dark rounded-lg p-6 space-y-6"><h2 class="text-2xl font-semibold text-secondary">1. Information We Collect</h2><ul class="list-disc pl-6"><li>Personal identification information</li><li>Payment information</li><li>Account credentials</li><li>Communication records</li></ul><h2 class="text-2xl font-semibold text-secondary">2. How We Use Your Information</h2><ul class="list-disc pl-6"><li>Process your orders</li><li>Provide customer support</li><li>Improve our services</li><li>Send important updates</li></ul><h2 class="text-2xl font-semibold text-secondary">3. Data Security</h2><p>We implement appropriate security measures to protect your personal information.</p><h2 class="text-2xl font-semibold text-secondary">4. Contact Us</h2><div class="bg-lightbg p-4 rounded-lg border-l-4 border-primary"><p><strong>Email:</strong> privacy@growzio.com</p><p><strong>WhatsApp:</strong> +92 319 5179084</p></div></div></div></div></dialog>
+  <dialog id="terms-modal"><button class="cart-modal-close" onclick="document.getElementById('terms-modal').close()"><i class="fa-solid fa-times"></i></button><div class="container mx-auto py-6 px-4 h-full overflow-y-auto"><div class="max-w-4xl mx-auto"><h1 class="text-3xl font-bold text-secondary mb-2 text-center">Terms of Service</h1><p class="text-center text-gray-400 mb-8">Last updated: January 2025</p><div class="bg-dark rounded-lg p-6 space-y-6"><h2 class="text-2xl font-semibold text-secondary">1. Acceptance of Terms</h2><p>By using GROWZIO's services, you agree to be bound by these Terms of Service.</p><h2 class="text-2xl font-semibold text-secondary">2. Payment Terms</h2><p>All sales are final unless otherwise stated in our Refund Policy.</p><h2 class="text-2xl font-semibold text-secondary">3. User Responsibilities</h2><p>You agree to use services only for lawful purposes and not share account credentials.</p><h2 class="text-2xl font-semibold text-secondary">4. Contact Information</h2><div class="bg-lightbg p-4 rounded-lg border-l-4 border-primary"><p><strong>Email:</strong> legal@growzio.com</p><p><strong>WhatsApp:</strong> +92 319 5179084</p></div></div></div></div></dialog>
+  <dialog id="refund-policy-modal"><button class="cart-modal-close" onclick="document.getElementById('refund-policy-modal').close()"><i class="fa-solid fa-times"></i></button><div class="container mx-auto py-6 px-4 h-full overflow-y-auto"><div class="max-w-4xl mx-auto"><h1 class="text-3xl font-bold text-secondary mb-2 text-center">Refund Policy</h1><p class="text-center text-gray-400 mb-8">Last updated: January 2025</p><div class="bg-dark rounded-lg p-6 space-y-6"><div class="bg-primary/20 border border-primary/50 rounded-lg p-4 text-center"><p class="text-primary-light font-semibold">Please read this policy carefully before making a purchase</p></div><h2 class="text-2xl font-semibold text-secondary">1. Digital Products Refund Policy</h2><p>Due to the nature of digital products, all sales are typically final.</p><h2 class="text-2xl font-semibold text-secondary">2. Eligibility for Refund</h2><p>Refunds may be considered for service failure, non-delivery, or duplicate payment.</p><h2 class="text-2xl font-semibold text-secondary">3. How to Request a Refund</h2><p>Contact our support team with your order details and reason for the request.</p><div class="bg-lightbg p-4 rounded-lg"><p><strong>Contact Support:</strong> WhatsApp +92 319 5179084</p></div></div></div></div></dialog>
 
 <script>
 /* -------------------------
-   Bundle Data - DUAL CURRENCY (PKR & USD)
+   Bundle Data & Logic (No Changes Here)
    ------------------------- */
-
-// Exchange rate for conversion (approximate)
-const EXCHANGE_RATE = 285; // 1 USD = 285 PKR
-
-// Function to convert PKR to USD
-function pkrToUsd(pkr) {
-  return (pkr / EXCHANGE_RATE).toFixed(2);
-}
-
-// BUNDLES DATA - All prices in both PKR and USD
-const bundles = [
-  {
-    name: "Ultimate Content Creator Bundle",
-    img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8cGuy7EJ90UO5nT9Wt_KrBuRv1QLX7zJUnjKZmq3MWeDelxDBEEMzoPkJerxGN3-wB0gMmMMYg0Q-KqRse0Wf7lOt5Se1-pMnNye6Tr0a7ej3przWQ6baGZdoFyIyDEP8WywGgIKwMRJWedNE4gAwocc0dTHcb1r3Xlq8G1yAh6P6JuSj5pwNkPV0rCI/s320/video%20editng.PNG",
-    desc: "Everything you need to create professional content",
-    originalPrice: 3000,
-    discountedPrice: 1500,
-    details: "The Ultimate Content Creator Bundle includes 300 GB of video editing material, premium thumbnail templates, and a royalty-free music library. Perfect for YouTubers, TikTok creators, and social media influencers looking to create high-quality content.",
-    category: "content",
-    features: ["300 GB Video Editing Material", "Premium Thumbnail Templates", "Royalty-Free Music Library", "Social Media Templates", "Video Transition Effects"]
-  },
-  {
-    name: "Digital Marketing Master Bundle",
-    img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDanUpbz4TD3JwPFSPCnaLGIkZSO8_cjpoxskOU7eteFQgW_VAl8LLskHNq483vAzk9ttS56jwXI37tS2TwQnR7CDULOFM_2pSSOWG08OlizkQcP1IwX2l5kyLAk3eN5fasOI6KwQpkhyphenhyphenCwpKaFHjf9I1T-mwc7EN25RFtBiDmDtSQmyql4TBVvUvKDBM/s320/thumbnailpack.PNG",
-    desc: "A complete toolkit to grow your business online",
-    originalPrice: 4000,
-    discountedPrice: 2000,
-    details: "The Digital Marketing Master Bundle provides everything you need to launch and scale your online business. Includes marketing funnel templates, email campaigns, SEO tools, and social media strategies.",
-    category: "marketing",
-    features: ["100+ Marketing Funnel Templates", "Email Marketing Campaigns", "SEO Optimization Toolkit", "Social Media Strategy Guide", "Analytics Dashboard Templates"]
-  },
-  {
-    name: "AI Content Generation Suite",
-    img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_Cm83xzQpINfADGAPSxZUd3zfTq2WFflEwP29JKd7LGJOueeH8kNOrChR_7PFJ4ggMpdxD_k6XXdUihldhUbaRJUReCRJ9dUIgX1tY7MOThhg75_SZaFGgXwG_ws1PB2WbE-hct2THlBKpsFsreS1Kq_RM8-cBDqced2sY6bZYI09Hgt4S9jK9O1higA/s320/images%20prompt.PNG",
-    desc: "AI tools and prompts for high-quality content",
-    originalPrice: 1800,
-    discountedPrice: 1200,
-    details: "The AI Content Generation Suite includes 1000+ AI image generation prompts, content writing templates, and video script templates. Perfect for content creators, marketers, and businesses looking to leverage AI technology.",
-    category: "ai",
-    features: ["1000+ AI Image Generation Prompts", "Content Writing Templates", "AI Video Script Templates", "ChatGPT Prompt Library", "AI Voiceover Scripts"]
-  },
-  {
-    name: "Web Development Starter Pack",
-    img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVjNr2rObY-KP2doF_7UQ5aU_KAoRRO027Npg_IVg1BRlDIB7MLWGAPznaVhlKv1GTlKcRbSqjFTpkJDBfsRkm-D8niYg9YQEcIddOyGnl6_Ori7A6B7T-ldOtcHSc7frX20ew7JoirHatqK7ZgEMVTJZSo91gZyaZ_vV1x6dNTXABeyGtwofHhZGfJYs/w243-h320/ChatGPT%20Image%20Oct%202525,%2005_28_39%20AM.png",
-    desc: "Resources for beginners to build stunning websites",
-    originalPrice: 3600,
-    discountedPrice: 1800,
-    details: "The Web Development Starter Pack includes HTML5 & CSS3 templates, JavaScript code snippets, and UI/UX design resources. Perfect for beginners and intermediate developers looking to build professional websites.",
-    category: "development",
-    features: ["HTML5 & CSS3 Templates", "JavaScript Code Snippets", "UI/UX Design Resources", "Responsive Design Templates", "Website Deployment Guide"]
-  },
-  {
-    name: "E-commerce Success Bundle",
-    img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioLOtx1eiRvFaUA0LkZbanK19h6HgWVb1iwJsbhVJK20c5w1YFlrkAlBYtBo-o71aS6W79s4NGJ6OxpuAu2Q5TyTVTHoK5vf0cLQvq6lQHGNpOFvhwDRkxYt28IbP-6GTE-PTL8m3DN-AkdFS0dUDLtT5V6hyphenhyphenBLHtd2ccTFrRLP4JvxBmA1AppoTGtQpE/s320/roadmapstyle.PNG",
-    desc: "Everything to start and grow a successful e-commerce business",
-    originalPrice: 4400,
-    discountedPrice: 2200,
-    details: "The E-commerce Success Bundle includes product photography templates, e-commerce website themes, and marketing strategy guides. Perfect for entrepreneurs looking to launch or scale their online store.",
-    category: "business",
-    features: ["Product Photography Templates", "E-commerce Website Themes", "Marketing Strategy Guide", "Inventory Management Templates", "Customer Service Scripts"]
-  },
-  {
-    name: "Graphic Design Pro Bundle",
-    img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
-    desc: "Professional resources for creating stunning visuals",
-    originalPrice: 2400,
-    discountedPrice: 1600,
-    details: "The Graphic Design Pro Bundle includes 500+ premium fonts, vector icon library, and logo design templates. Perfect for graphic designers, marketers, and business owners looking to create professional visuals.",
-    category: "design",
-    features: ["500+ Premium Fonts Collection", "Vector Icon Library", "Logo Design Templates", "Brand Identity Guidelines", "Social Media Graphics Templates"]
-  }
-];
-
-/* -------------------------
-   Utility & Rendering
-   ------------------------- */
-function renderBundles() {
-  const container = document.getElementById('bundles-list');
-  container.innerHTML = '';
-  
-  bundles.forEach((bundle, i) => {
-    const usdPrice = pkrToUsd(bundle.discountedPrice);
-    
-    const card = document.createElement('div');
-    card.className = 'bundle-card';
-    card.setAttribute('data-aos', 'fade-up');
-    card.setAttribute('data-aos-delay', (i % 4) * 100);
-    
-    card.innerHTML = `
-      <div class="bundle-product-container">
-        <div class="bundle-product">
-          <div class="bundle-product-front">
-            <img src="${bundle.img}" alt="${bundle.name}">
-          </div>
-          <div class="bundle-product-back">
-            <h3>Bundle Features</h3>
-            <ul>
-              ${bundle.features.map(feature => `<li>${feature}</li>`).join('')}
-            </ul>
-          </div>
-        </div>
-      </div>
-      <h2>${bundle.name}</h2>
-      <div class="dual-price-container">
-        <div class="bundle-original-price">PKR ${bundle.originalPrice}</div>
-        <div class="bundle-sale-price">
-          <div class="price-pkr">PKR ${bundle.discountedPrice}</div>
-          <div class="price-usd">(~$${usdPrice} USD)</div>
-        </div>
-      </div>
-      <button class="bundle-btn add-to-cart" data-name="${bundle.name}" data-price="${bundle.discountedPrice}">Add to Cart</button>
-      <button class="view-details-btn" data-product='${JSON.stringify(bundle).replace(/'/g, "\\'")}'>View Details</button>
-    `;
-    
-    container.appendChild(card);
-  });
-  
-  // Add flip functionality
-  const bundleContainers = document.querySelectorAll('.bundle-product-container');
-  bundleContainers.forEach(container => {
-    container.addEventListener('click', function() {
-      const bundleCard = this.closest('.bundle-card');
-      bundleCard.classList.toggle('flipped');
-    });
-  });
-}
-
-// Render bundles when page loads
-document.addEventListener('DOMContentLoaded', function() {
-  renderBundles();
-  
-  // Initialize AOS animations
-  AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100,
-    delay: 100,
-  });
-});
-
-/* -------------------------
-   Cart Logic with Quantity
-   ------------------------- */
-let cart = [];
-
-function updateCartDisplays(){
-  const count = cart.reduce((total, item) => total + item.quantity, 0);
-  const cartCount = document.getElementById('cart-count');
-  if(cartCount) cartCount.textContent = count;
-  const mobileCount = document.getElementById('cart-count-mobile');
-  if(mobileCount) mobileCount.textContent = count;
-}
-
-// Show added to cart modal
-function showAddedToCartModal(itemName) {
-  const modal = document.getElementById('added-to-cart-modal');
-  const itemNameElement = document.getElementById('added-item-name');
-  
-  itemNameElement.textContent = `"${itemName}" has been successfully added to your cart.`;
-  
-  try { 
-    modal.showModal(); 
-  } catch(err) { 
-    console.warn(err); 
-  }
-}
-
-// Add to cart
-document.addEventListener('click', e => {
-  if(e.target.matches('.add-to-cart') || e.target.closest('.add-to-cart')){
-    const btn = e.target.closest('.add-to-cart');
-    const name = btn.dataset.name; 
-    const price = parseInt(btn.dataset.price);
-    
-    // Check if item already exists in cart
-    const existingItem = cart.find(item => item.name === name);
-    
-    if(existingItem) {
-      // If item exists, increase quantity
-      existingItem.quantity += 1;
-    } else {
-      // If item doesn't exist, add it with quantity 1
-      cart.push({name, price, quantity: 1});
-    }
-    
-    updateCartDisplays();
-    
-    // Show added feedback on button
-    btn.innerHTML = '<span class="loading"></span> Added';
-    setTimeout(() => {
-      btn.textContent = 'Add to Cart';
-    }, 1500);
-    
-    // Show the added to cart modal
-    showAddedToCartModal(name);
-  }
-});
-
-// Open cart modal
-function openCartModal(){
-  const modal = document.getElementById('cart-modal');
-  const items = document.getElementById('cart-items');
-  const subtotal = document.getElementById('cart-subtotal');
-  const total = document.getElementById('cart-total');
-  
-  items.innerHTML = ''; 
-  let sum = 0;
-  let itemCount = 0;
-  
-  if(cart.length === 0) {
-    items.innerHTML = '<div class="text-center py-10"><i class="fa-solid fa-cart-shopping text-gray-300 text-5xl mb-4"></i><p class="text-gray-500">Your cart is empty</p></div>';
-  } else {
-    cart.forEach((item, idx) => { 
-      const itemTotal = item.price * item.quantity;
-      sum += itemTotal;
-      itemCount += item.quantity;
-      
-      items.innerHTML += `
-        <div class="cart-item">
-          <div class="cart-item-info">
-            <div class="cart-item-name">${item.name}</div>
-            <div class="cart-item-price">${item.price} PKR each</div>
-          </div>
-          <div class="cart-item-controls">
-            <div class="quantity-controls">
-              <button class="quantity-btn decrease-quantity" data-index="${idx}">-</button>
-              <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-index="${idx}">
-              <button class="quantity-btn increase-quantity" data-index="${idx}">+</button>
-            </div>
-            <div class="cart-item-total">${itemTotal} PKR</div>
-            <button class="cart-remove-btn remove-item" data-index="${idx}">
-              <i class="fa-solid fa-trash"></i>
-            </button>
-          </div>
-        </div>
-      `; 
-    });
-  }
-  
-  subtotal.textContent = sum + ' PKR';
-  total.textContent = sum + ' PKR';
-  
-  try { 
-    modal.showModal(); 
-  } catch(err) { 
-    console.warn(err); 
-  }
-  
-  // Add event listeners to quantity controls
-  document.querySelectorAll('.decrease-quantity').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const index = parseInt(this.dataset.index);
-      if(cart[index].quantity > 1) {
-        cart[index].quantity -= 1;
-        openCartModal();
-        updateCartDisplays();
-      }
-    });
-  });
-  
-  document.querySelectorAll('.increase-quantity').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const index = parseInt(this.dataset.index);
-      cart[index].quantity += 1;
-      openCartModal();
-      updateCartDisplays();
-    });
-  });
-  
-  document.querySelectorAll('.quantity-input').forEach(input => {
-    input.addEventListener('change', function() {
-      const index = parseInt(this.dataset.index);
-      const newQuantity = parseInt(this.value);
-      if(newQuantity > 0) {
-        cart[index].quantity = newQuantity;
-        openCartModal();
-        updateCartDisplays();
-      } else {
-        this.value = cart[index].quantity;
-      }
-    });
-  });
-  
-  document.querySelectorAll('.remove-item').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const index = parseInt(this.dataset.index);
-      cart.splice(index, 1);
-      openCartModal();
-      updateCartDisplays();
-    });
-  });
-}
-
-// Event listeners for the added to cart modal buttons
-document.getElementById('continue-shopping').addEventListener('click', function() {
-  document.getElementById('added-to-cart-modal').close();
-});
-
-document.getElementById('view-cart').addEventListener('click', function() {
-  document.getElementById('added-to-cart-modal').close();
-  openCartModal();
-});
-
-document.getElementById('btn-open-cart')?.addEventListener('click', openCartModal);
-document.getElementById('btn-open-cart-mobile')?.addEventListener('click', openCartModal);
-
-// Add this function to validate payment method selection
-function validatePaymentMethod() {
-  const paymentMethod = document.getElementById('payment-method').value;
-  if (!paymentMethod) {
-    alert('Please select a payment method before proceeding.');
-    return false;
-  }
-  return true;
-}
-
-// Proceed to payment page
-document.getElementById('proceed-to-payment').addEventListener('click', function() {
-  if(cart.length === 0) {
-    alert('Your cart is empty! Please add items before proceeding to payment.');
-    return;
-  }
-  
-  // Validate payment method selection
-  if (!validatePaymentMethod()) {
-    return;
-  }
-  
-  // Get selected payment method
-  const paymentMethod = document.getElementById('payment-method').value;
-  
-  // Hide main content and show payment page
-  document.getElementById('main-content').classList.add('hidden');
-  document.getElementById('payment-page').classList.remove('hidden');
-  
-  // Update payment page with cart items
-  const paymentOrderItems = document.getElementById('payment-order-items');
-  const paymentTotal = document.getElementById('payment-total');
-  let itemsHTML = '';
-  let total = 0;
-  
-  cart.forEach((item, index) => {
-    const itemTotal = item.price * item.quantity;
-    itemsHTML += `
-      <div class="order-item flex justify-between mb-2 pb-2 border-b border-gray-200">
-        <span>${item.name} (Qty: ${item.quantity})</span>
-        <span>${itemTotal} PKR</span>
-      </div>
-    `;
-    total += itemTotal;
-  });
-  
-  paymentOrderItems.innerHTML = itemsHTML;
-  paymentTotal.textContent = total + ' PKR';
-  
-  // Hide all payment options first
-  document.querySelectorAll('.payment-option').forEach(option => {
-    option.style.display = 'none';
-  });
-  
-  // Show only the selected payment method
-  let selectedOptionIndex = 0;
-  if (paymentMethod === 'jazzcash') {
-    selectedOptionIndex = 0;
-  } else if (paymentMethod === 'easypaisa') {
-    selectedOptionIndex = 1;
-  } else if (paymentMethod === 'binance') {
-    selectedOptionIndex = 2;
-  }
-  
-  document.querySelectorAll('.payment-option')[selectedOptionIndex].style.display = 'block';
-  
-  // Close cart modal
-  document.getElementById('cart-modal').close();
-});
-
-// Go back to shopping from payment page
-function goBackToShopping() {
-  document.getElementById('payment-page').classList.add('hidden');
-  document.getElementById('main-content').classList.remove('hidden');
-  window.scrollTo(0, 0);
-}
-
-// Confirm payment function
-function confirmPayment() {
-  if(cart.length === 0) {
-    alert('Your cart is empty!');
-    return;
-  }
-  
-  // Get selected payment method
-  const paymentMethod = document.getElementById('payment-method').value;
-  let paymentMethodText = '';
-  let paymentDetails = '';
-  
-  if (paymentMethod === 'jazzcash') {
-    paymentMethodText = 'JazzCash';
-    paymentDetails = 'Name: Khairunisa, Number: 03295478732';
-  } else if (paymentMethod === 'easypaisa') {
-    paymentMethodText = 'Easypaisa';
-    paymentDetails = 'Name: Khairunisa, Number: 03325982480';
-  } else if (paymentMethod === 'binance') {
-    paymentMethodText = 'Binance';
-    paymentDetails = 'Pay ID/UID: 14245485, Name: Khairunisa';
-  }
-  
-  // Get order details with quantities
-  let orderText = '';
-  cart.forEach(item => {
-    const itemTotal = item.price * item.quantity;
-    orderText += `${item.name} (Qty: ${item.quantity}) - ${itemTotal} PKR\n`;
-  });
-  
-  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  
-  // Create WhatsApp message with quantities
-  let text = '🔥 Bundle Order - GROWZIO BUNDLES\n\n';
-  text += 'Order Details:\n';
-  text += orderText;
-  text += `\nTotal: ${total} PKR`;
-  text += `\n\nPayment Method: ${paymentMethodText}`;
-  text += `\nPayment Details: ${paymentDetails}`;
-  text += '\n\n✅ I have made the payment. Please process my order.';
-  
-  // Encode the message properly for WhatsApp
-  const encodedText = encodeURIComponent(text);
-  
-  // Open WhatsApp
-  const waNumber = '923195179084';
-  window.open(`https://wa.me/${waNumber}?text=${encodedText}`, '_blank');
-  
-  // Clear cart after payment
-  cart = [];
-  updateCartDisplays();
-  
-  // Go back to shopping
-  goBackToShopping();
-}
-
-/* -------------------------
-   Offer Timer Logic (24 hours from page load)
-   ------------------------- */
-const OFFER_DURATION_MS = 24 * 60 * 60 * 1000; // 24h
-const endTime = new Date(Date.now() + OFFER_DURATION_MS);
-function updateTimer(){
-  const now = new Date(); 
-  const timeLeft = endTime - now;
-  if(timeLeft <= 0){
-    ['hours','minutes','seconds'].forEach(id => document.getElementById(id).textContent = '00');
-    document.querySelector('.offer-timer').innerHTML = '<div class="container py-2"><span class="font-bold">Offer has ended! New deals coming soon.</span></div>';
-    return;
-  }
-  const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-}
-updateTimer(); 
-setInterval(updateTimer, 1000);
-
-/* -------------------------
-   Mobile menu toggle
-   ------------------------- */
-const mobileToggle = document.getElementById('mobile-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-if(mobileToggle){
-  mobileToggle.addEventListener('click', () => {
-    const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-    mobileToggle.setAttribute('aria-expanded', String(!expanded));
-    mobileMenu.classList.toggle('active');
-    
-    // Update icon
-    const icon = mobileToggle.querySelector('i');
-    if(icon.classList.contains('fa-bars')) {
-      icon.classList.remove('fa-bars');
-      icon.classList.add('fa-times');
-    } else {
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-bars');
-    }
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-    mobileToggle.setAttribute('aria-expanded', 'false');
-    mobileToggle.querySelector('i').classList.remove('fa-times');
-    mobileToggle.querySelector('i').classList.add('fa-bars');
-  }));
-}
-
-/* -------------------------
-   Smooth anchor scroll
-   ------------------------- */
-document.querySelectorAll("a[href^='#']").forEach(a => {
-  a.addEventListener('click', function(e){
-    const href = this.getAttribute('href');
-    if(href === '#') return;
-    
-    const target = document.querySelector(href);
-    if(target){ 
-      e.preventDefault(); 
-      target.scrollIntoView({
-        behavior: 'smooth', 
-        block: 'start'
-      }); 
-    }
-  });
-});
-
-/* -------------------------
-   Product Detail Modal
-   ------------------------- */
-document.addEventListener('click', function(e) {
-  if (e.target.matches('.view-details-btn') || e.target.closest('.view-details-btn')) {
-    const btn = e.target.closest('.view-details-btn');
-    const productData = JSON.parse(btn.dataset.product);
-    
-    // Populate the modal with product details
-    const modalContent = document.getElementById('product-detail-content');
-    const usdPrice = pkrToUsd(productData.discountedPrice);
-    
-    modalContent.innerHTML = `
-      <div class="flex flex-col md:flex-row gap-6">
-        <div class="md:w-1/3">
-          <img src="${productData.img}" alt="${productData.name}" class="w-full rounded-lg shadow-md">
-        </div>
-        <div class="md:w-2/3">
-          <h2 class="text-2xl font-bold mb-2 text-secondary">${productData.name}</h2>
-          <p class="text-gray-600 mb-4">${productData.desc}</p>
-          <div class="mb-4">
-            <span class="original-price">${productData.originalPrice} PKR</span>
-            <div class="dual-currency">
-              <span class="font-bold text-xl text-primary">${productData.discountedPrice} PKR</span>
-              <span class="price-usd">~$${usdPrice} USD</span>
-            </div>
-          </div>
-          <div class="bg-gray-100 p-4 rounded-lg mb-4">
-            <h3 class="font-bold mb-2 text-secondary">Bundle Details</h3>
-            <p class="text-gray-700">${productData.details}</p>
-            <p class="mt-2"><strong>Category:</strong> ${productData.category}</p>
-            <div class="mt-4">
-              <h4 class="font-bold mb-2">What's Included:</h4>
-              <ul class="list-disc pl-5">
-                ${productData.features.map(feature => `<li>${feature}</li>`).join('')}
-              </ul>
-            </div>
-          </div>
-          <button class="add-to-cart btn w-full" data-name="${productData.name}" data-price="${productData.discountedPrice}">Add to Cart</button>
-        </div>
-      </div>
-    `;
-    
-    // Show the modal
-    const modal = document.getElementById('product-detail-modal');
-    try { 
-      modal.showModal(); 
-    } catch(err) { 
-      console.warn(err); 
-    }
-  }
-});
-
-/* -------------------------
-   Scroll to Top and Bottom Buttons
-   ------------------------- */
-const scrollToTopBtn = document.getElementById('scrollToTop');
-const scrollToBottomBtn = document.getElementById('scrollToBottom');
-
-// Show/hide the buttons based on scroll position
-window.addEventListener('scroll', function() {
-  // Show up arrow when scrolled down
-  if (window.pageYOffset > 300) {
-    scrollToTopBtn.classList.add('show');
-  } else {
-    scrollToTopBtn.classList.remove('show');
-  }
-  
-  // Show down arrow when at the top of the page
-  if (window.pageYOffset < 100) {
-    scrollToBottomBtn.classList.add('show');
-  } else {
-    scrollToBottomBtn.classList.remove('show');
-  }
-});
-
-// Scroll to top when button is clicked
-scrollToTopBtn.addEventListener('click', function() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
-
-// Scroll to bottom when button is clicked
-scrollToBottomBtn.addEventListener('click', function() {
-  window.scrollTo({
-    top: document.body.scrollHeight,
-    behavior: 'smooth'
-  });
-});
-
-/* -------------------------
-   Code Protection
-   ------------------------- */
-// Disable right-click
-document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-  return false;
-});
-
-// Disable text selection
-document.addEventListener('selectstart', function(e) {
-  e.preventDefault();
-  return false;
-});
-
-// Disable keyboard shortcuts for view source, etc.
-document.addEventListener('keydown', function(e) {
-  // Disable F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+U
-  if (
-    e.key === 'F12' || 
-    (e.ctrlKey && e.shiftKey && e.key === 'I') || 
-    (e.ctrlKey && e.shiftKey && e.key === 'C') || 
-    (e.ctrlKey && e.key === 'u')
-  ) {
-    e.preventDefault();
-    return false;
-  }
-});
-
-// Disable drag and drop for images
-document.querySelectorAll('img').forEach(img => {
-  img.addEventListener('dragstart', function(e) {
-    e.preventDefault();
-    return false;
-  });
-});
-
-/* -------------------------
-   Policy Modals
-   ------------------------- */
-// Open Privacy Policy Modal
-document.getElementById('privacy-policy-link').addEventListener('click', function(e) {
-  e.preventDefault();
-  const modal = document.getElementById('privacy-policy-modal');
-  try { 
-    modal.showModal(); 
-  } catch(err) { 
-    console.warn(err); 
-  }
-});
-
-// Open Terms of Service Modal
-document.getElementById('terms-link').addEventListener('click', function(e) {
-  e.preventDefault();
-  const modal = document.getElementById('terms-modal');
-  try { 
-    modal.showModal(); 
-  } catch(err) { 
-    console.warn(err); 
-  }
-});
-
-// Open Refund Policy Modal
-document.getElementById('refund-policy-link').addEventListener('click', function(e) {
-  e.preventDefault();
-  const modal = document.getElementById('refund-policy-modal');
-  try { 
-    modal.showModal(); 
-  } catch(err) { 
-    console.warn(err); 
-  }
-});
-
-/* Init cart badge */
-updateCartDisplays();
+const EXCHANGE_RATE = 285;
+function pkrToUsd(pkr) { return (pkr / EXCHANGE_RATE).toFixed(2); }
+const bundles = [{"name":"Ultimate Content Creator Bundle","img":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8cGuy7EJ90UO5nT9Wt_KrBuRv1QLX7zJUnjKZmq3MWeDelxDBEEMzoPkJerxGN3-wB0gMmMMYg0Q-KqRse0Wf7lOt5Se1-pMnNye6Tr0a7ej3przWQ6baGZdoFyIyDEP8WywGgIKwMRJWedNE4gAwocc0dTHcb1r3Xlq8G1yAh6P6JuSj5pwNkPV0rCI/s320/video%20editng.PNG","desc":"Everything you need to create professional content","originalPrice":3000,"discountedPrice":1500,"details":"The Ultimate Content Creator Bundle includes 300 GB of video editing material, premium thumbnail templates, and a royalty-free music library. Perfect for YouTubers, TikTok creators, and social media influencers looking to create high-quality content.","category":"content","features":["300 GB Video Editing Material","Premium Thumbnail Templates","Royalty-Free Music Library","Social Media Templates","Video Transition Effects"]},{"name":"Digital Marketing Master Bundle","img":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDanUpbz4TD3JwPFSPCnaLGIkZSO8_cjpoxskOU7eteFQgW_VAl8LLskHNq483vAzk9ttS56jwXI37tS2TwQnR7CDULOFM_2pSSOWG08OlizkQcP1IwX2l5kyLAk3eN5fasOI6KwQpkhyphenhyphenCwpKaFHjf9I1T-mwc7EN25RFtBiDmDtSQmyql4TBVvUvKDBM/s320/thumbnailpack.PNG","desc":"A complete toolkit to grow your business online","originalPrice":4000,"discountedPrice":2000,"details":"The Digital Marketing Master Bundle provides everything you need to launch and scale your online business. Includes marketing funnel templates, email campaigns, SEO tools, and social media strategies.","category":"marketing","features":["100+ Marketing Funnel Templates","Email Marketing Campaigns","SEO Optimization Toolkit","Social Media Strategy Guide","Analytics Dashboard Templates"]},{"name":"AI Content Generation Suite","img":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_Cm83xzQpINfADGAPSxZUd3zfTq2WFflEwP29JKd7LGJOueeH8kNOrChR_7PFJ4ggMpdxD_k6XXdUihldhUbaRJUReCRJ9dUIgX1tY7MOThhg75_SZaFGgXwG_ws1PB2WbE-hct2THlBKpsFsreS1Kq_RM8-cBDqced2sY6bZYI09Hgt4S9jK9O1higA/s320/images%20prompt.PNG","desc":"AI tools and prompts for high-quality content","originalPrice":1800,"discountedPrice":1200,"details":"The AI Content Generation Suite includes 1000+ AI image generation prompts, content writing templates, and video script templates. Perfect for content creators, marketers, and businesses looking to leverage AI technology.","category":"ai","features":["1000+ AI Image Generation Prompts","Content Writing Templates","AI Video Script Templates","ChatGPT Prompt Library","AI Voiceover Scripts"]},{"name":"Web Development Starter Pack","img":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVjNr2rObY-KP2doF_7UQ5aU_KAoRRO027Npg_IVg1BRlDIB7MLWGAPznaVhlKv1GTlKcRbSqjFTpkJDBfsRkm-D8niYg9YQEcIddOyGnl6_Ori7A6B7T-ldOtcHSc7frX20ew7JoirHatqK7ZgEMVTJZSo91gZyaZ_vV1x6dNTXABeyGtwofHhZGfJYs/w243-h320/ChatGPT%20Image%20Oct%202525,%2005_28_39%20AM.png","desc":"Resources for beginners to build stunning websites","originalPrice":3600,"discountedPrice":1800,"details":"The Web Development Starter Pack includes HTML5 & CSS3 templates, JavaScript code snippets, and UI/UX design resources. Perfect for beginners and intermediate developers looking to build professional websites.","category":"development","features":["HTML5 & CSS3 Templates","JavaScript Code Snippets","UI/UX Design Resources","Responsive Design Templates","Website Deployment Guide"]},{"name":"E-commerce Success Bundle","img":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioLOtx1eiRvFaUA0LkZbanK19h6HgWVb1iwJsbhVJK20c5w1YFlrkAlBYtBo-o71aS6W79s4NGJ6OxpuAu2Q5TyTVTHoK5vf0cLQvq6lQHGNpOFvhwDRkxYt28IbP-6GTE-PTL8m3DN-AkdFS0dUDLtT5V6hyphenhyphenBLHtd2ccTFrRLP4JvxBmA1AppoTGtQpE/s320/roadmapstyle.PNG","desc":"Everything to start and grow a successful e-commerce business","originalPrice":4400,"discountedPrice":2200,"details":"The E-commerce Success Bundle includes product photography templates, e-commerce website themes, and marketing strategy guides. Perfect for entrepreneurs looking to launch or scale their online store.","category":"business","features":["Product Photography Templates","E-commerce Website Themes","Marketing Strategy Guide","Inventory Management Templates","Customer Service Scripts"]},{"name":"Graphic Design Pro Bundle","img":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG","desc":"Professional resources for creating stunning visuals","originalPrice":2400,"discountedPrice":1600,"details":"The Graphic Design Pro Bundle includes 500+ premium fonts, vector icon library, and logo design templates. Perfect for graphic designers, marketers, and business owners looking to create professional visuals.","category":"design","features":["500+ Premium Fonts Collection","Vector Icon Library","Logo Design Templates","Brand Identity Guidelines","Social Media Graphics Templates"]}];
+function renderBundles(){const t=document.getElementById("bundles-list");t.innerHTML="",bundles.forEach((e,a)=>{const n=pkrToUsd(e.discountedPrice),d=document.createElement("div");d.className="bundle-card",d.setAttribute("data-aos","fade-up"),d.setAttribute("data-aos-delay",100*(a%4)),d.innerHTML=`\n      <div class="bundle-product-container">\n        <div class="bundle-product">\n          <div class="bundle-product-front">\n            <img src="${e.img}" alt="${e.name}">\n          </div>\n          <div class="bundle-product-back">\n            <h3>Bundle Features</h3>\n            <ul>\n              ${e.features.map(t=>`<li>${t}</li>`).join("")}\n            </ul>\n          </div>\n        </div>\n      </div>\n      <h2>${e.name}</h2>\n      <div class="dual-price-container">\n        <div class="bundle-original-price">PKR ${e.originalPrice}</div>\n        <div class="bundle-sale-price">\n          <div class="price-pkr">PKR ${e.discountedPrice}</div>\n          <div class="price-usd">(~$${n} USD)</div>\n        </div>\n      </div>\n      <button class="bundle-btn add-to-cart" data-name="${e.name}" data-price="${e.discountedPrice}">Add to Cart</button>\n      <button class="view-details-btn" data-product='${JSON.stringify(e).replace(/'/g,"\\'")}'">View Details</button>\n    `,t.appendChild(d)}),document.querySelectorAll(".bundle-product-container").forEach(t=>{t.addEventListener("click",function(){this.closest(".bundle-card").classList.toggle("flipped")})})}document.addEventListener("DOMContentLoaded",function(){renderBundles(),AOS.init({duration:1e3,once:!0,offset:100,delay:100})});let cart=[];function updateCartDisplays(){const t=cart.reduce((t,e)=>t+e.quantity,0),e=document.getElementById("cart-count");e&&(e.textContent=t);const a=document.getElementById("cart-count-mobile");a&&(a.textContent=t)}function showAddedToCartModal(t){const e=document.getElementById("added-to-cart-modal"),a=document.getElementById("added-item-name");a.textContent=`"${t}" has been successfully added to your cart.`;try{e.showModal()}catch(t){console.warn(t)}}document.addEventListener("click",t=>{if(t.target.matches(".add-to-cart")||t.target.closest(".add-to-cart")){const e=t.target.closest(".add-to-cart"),a=e.dataset.name,n=parseInt(e.dataset.price),d=cart.find(t=>t.name===a);d?d.quantity+=1:cart.push({name:a,price:n,quantity:1}),updateCartDisplays(),e.innerHTML='<span class="loading"></span> Added',setTimeout(()=>{e.textContent="Add to Cart"},1500),showAddedToCartModal(a)}}),document.getElementById("continue-shopping").addEventListener("click",function(){document.getElementById("added-to-cart-modal").close()}),document.getElementById("view-cart").addEventListener("click",function(){document.getElementById("added-to-cart-modal").close(),openCartModal()});const btnOpenCart=document.getElementById("btn-open-cart"),btnOpenCartMobile=document.getElementById("btn-open-cart-mobile");function openCartModal(){const t=document.getElementById("cart-modal"),e=document.getElementById("cart-items"),a=document.getElementById("cart-subtotal"),n=document.getElementById("cart-total");let d=0,o=0;if(e.innerHTML="",0===cart.length)e.innerHTML='<div class="text-center py-10"><i class="fa-solid fa-cart-shopping text-gray-700 text-5xl mb-4"></i><p class="text-gray-500">Your cart is empty</p></div>';else{cart.forEach((t,a)=>{const n=t.price*t.quantity;d+=n,o+=t.quantity,e.innerHTML+=`\n        <div class="cart-item">\n          <div class="cart-item-info">\n            <div class="cart-item-name">${t.name}</div>\n            <div class="cart-item-price">${t.price} PKR each</div>\n          </div>\n          <div class="cart-item-controls">\n            <div class="quantity-controls">\n              <button class="quantity-btn decrease-quantity" data-index="${a}">-</button>\n              <input type="number" class="quantity-input" value="${t.quantity}" min="1" data-index="${a}">\n              <button class="quantity-btn increase-quantity" data-index="${a}">+</button>\n            </div>\n            <div class="cart-item-total">${n} PKR</div>\n            <button class="cart-remove-btn remove-item" data-index="${a}">\n              <i class="fa-solid fa-trash"></i>\n            </button>\n          </div>\n        </div>\n      `}),document.querySelectorAll(".decrease-quantity").forEach(t=>{t.addEventListener("click",function(){const t=parseInt(this.dataset.index);cart[t].quantity>1&&(cart[t].quantity-=1,openCartModal(),updateCartDisplays())})}),document.querySelectorAll(".increase-quantity").forEach(t=>{t.addEventListener("click",function(){const t=parseInt(this.dataset.index);cart[t].quantity+=1,openCartModal(),updateCartDisplays()})}),document.querySelectorAll(".quantity-input").forEach(t=>{t.addEventListener("change",function(){const t=parseInt(this.dataset.index),e=parseInt(this.value);e>0?(cart[t].quantity=e,openCartModal(),updateCartDisplays()):this.value=cart[t].quantity})}),document.querySelectorAll(".remove-item").forEach(t=>{t.addEventListener("click",function(){const t=parseInt(this.dataset.index);cart.splice(t,1),openCartModal(),updateCartDisplays()})})}a.textContent=d+" PKR",n.textContent=d+" PKR";try{t.showModal()}catch(t){console.warn(t)}}btnOpenCart?.addEventListener("click",openCartModal),btnOpenCartMobile?.addEventListener("click",openCartModal),document.getElementById("proceed-to-payment").addEventListener("click",function(){if(0===cart.length)return void alert("Your cart is empty! Please add items before proceeding to payment.");if(!function(){const t=document.getElementById("payment-method").value;return t||(alert("Please select a payment method before proceeding."),!1)}())return;const t=document.getElementById("payment-method").value;document.getElementById("main-content").classList.add("hidden"),document.getElementById("payment-page").classList.remove("hidden");const e=document.getElementById("payment-order-items"),a=document.getElementById("payment-total");let n="",d=0;cart.forEach((t,e)=>{const a=t.price*t.quantity;n+=`\n      <div class="order-item flex justify-between mb-2 pb-2 border-b border-gray-700">\n        <span>${t.name} (Qty: ${t.quantity})</span>\n        <span>${a} PKR</span>\n      </div>\n    `,d+=a}),e.innerHTML=n,a.textContent=d+" PKR",document.querySelectorAll(".payment-option").forEach(t=>{t.style.display="none"});let o=0;"jazzcash"===t?o=0:"easypaisa"===t?o=1:"binance"===t&&(o=2),document.querySelectorAll(".payment-option")[o].style.display="block",document.getElementById("cart-modal").close()});function goBackToShopping(){document.getElementById("payment-page").classList.add("hidden"),document.getElementById("main-content").classList.remove("hidden"),window.scrollTo(0,0)}function confirmPayment(){if(0===cart.length)return void alert("Your cart is empty!");const t=document.getElementById("payment-method").value;let e="",a="";"jazzcash"===t?(e="JazzCash",a="Name: Khairunisa, Number: 03295478732"):"easypaisa"===t?(e="Easypaisa",a="Name: Khairunisa, Number: 03325982480"):"binance"===t&&(e="Binance",a="Pay ID/UID: 14245485, Name: Khairunisa");let n="";cart.forEach(t=>{const e=t.price*t.quantity;n+=`${t.name} (Qty: ${t.quantity}) - ${e} PKR\n`});const d=cart.reduce((t,e)=>t+e.price*e.quantity,0);let o="🔥 Bundle Order - GROWZIO BUNDLES\n\nOrder Details:\n";o+=n,o+=`\nTotal: ${d} PKR`,o+=`\n\nPayment Method: ${e}`,o+=`\nPayment Details: ${a}`,o+="\n\n✅ I have made the payment. Please process my order.",window.open(`https://wa.me/923195179084?text=${encodeURIComponent(o)}`,"_blank"),cart=[],updateCartDisplays(),goBackToShopping()}const mobileToggle=document.getElementById("mobile-toggle"),mobileMenu=document.getElementById("mobile-menu");mobileToggle&&mobileToggle.addEventListener("click",()=>{const t="true"===mobileToggle.getAttribute("aria-expanded");mobileToggle.setAttribute("aria-expanded",String(!t)),mobileMenu.classList.toggle("active");const e=mobileToggle.querySelector("i");e.classList.contains("fa-bars")?(e.classList.remove("fa-bars"),e.classList.add("fa-times")):(e.classList.remove("fa-times"),e.classList.add("fa-bars"))}),document.querySelectorAll("a[href^='#']").forEach(t=>{t.addEventListener("click",function(t){const e=this.getAttribute("href");if("#"===e)return;const a=document.querySelector(e);a&&(t.preventDefault(),a.scrollIntoView({behavior:"smooth",block:"start"}))})}),document.addEventListener("click",function(t){if(t.target.matches(".view-details-btn")||t.target.closest(".view-details-btn")){const e=t.target.closest(".view-details-btn"),a=JSON.parse(e.dataset.product),n=document.getElementById("product-detail-content"),d=pkrToUsd(a.discountedPrice);n.innerHTML=`\n      <div class="flex flex-col md:flex-row gap-6">\n        <div class="md:w-1/3">\n          <img src="${a.img}" alt="${a.name}" class="w-full rounded-lg shadow-md">\n        </div>\n        <div class="md:w-2/3">\n          <h2 class="text-2xl font-bold mb-2 text-secondary">${a.name}</h2>\n          <p class="text-gray-400 mb-4">${a.desc}</p>\n          <div class="mb-4">\n            <span class="original-price">${a.originalPrice} PKR</span>\n            <div class="dual-currency">\n              <span class="font-bold text-xl text-primary">${a.discountedPrice} PKR</span>\n              <span class="price-usd">~$${d} USD</span>\n            </div>\n          </div>\n          <div class="bg-lightbg p-4 rounded-lg mb-4 border border-gray-700">\n            <h3 class="font-bold mb-2 text-secondary">Bundle Details</h3>\n            <p class="text-gray-300">${a.details}</p>\n            <p class="mt-2"><strong>Category:</strong> ${a.category}</p>\n            <div class="mt-4">\n              <h4 class="font-bold mb-2">What's Included:</h4>\n              <ul class="list-disc pl-5">\n                ${a.features.map(t=>`<li>${t}</li>`).join("")}\n              </ul>\n            </div>\n          </div>\n          <button class="add-to-cart btn w-full" data-name="${a.name}" data-price="${a.discountedPrice}">Add to Cart</button>\n        </div>\n      </div>\n    `;const o=document.getElementById("product-detail-modal");try{o.showModal()}catch(t){console.warn(t)}}});const scrollToTopBtn=document.getElementById("scrollToTop"),scrollToBottomBtn=document.getElementById("scrollToBottom");window.addEventListener("scroll",function(){window.pageYOffset>300?scrollToTopBtn.classList.add("show"):scrollToTopBtn.classList.remove("show"),window.pageYOffset<100?scrollToBottomBtn.classList.add("show"):scrollToBottomBtn.classList.remove("show")}),scrollToTopBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})}),scrollToBottomBtn.addEventListener("click",function(){window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"})}),document.addEventListener("contextmenu",function(t){return t.preventDefault(),!1}),document.addEventListener("selectstart",function(t){return t.preventDefault(),!1}),document.addEventListener("keydown",function(t){if("F12"===t.key||t.ctrlKey&&t.shiftKey&&"I"===t.key||t.ctrlKey&&t.shiftKey&&"C"===t.key||t.ctrlKey&&"u"===t.key)return t.preventDefault(),!1}),document.querySelectorAll("img").forEach(t=>{t.addEventListener("dragstart",function(t){return t.preventDefault(),!1})}),document.getElementById("privacy-policy-link").addEventListener("click",function(t){t.preventDefault();const e=document.getElementById("privacy-policy-modal");try{e.showModal()}catch(t){console.warn(t)}}),document.getElementById("terms-link").addEventListener("click",function(t){t.preventDefault();const e=document.getElementById("terms-modal");try{e.showModal()}catch(t){console.warn(t)}}),document.getElementById("refund-policy-link").addEventListener("click",function(t){t.preventDefault();const e=document.getElementById("refund-policy-modal");try{e.showModal()}catch(t){console.warn(t)}}),updateCartDisplays();
 </script>
 </body>
 </html>
